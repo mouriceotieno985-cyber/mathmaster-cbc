@@ -3,62 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MathMaster • KEPSEA & Senior School</title>
+<title>MathMaster • KPSEA Past Papers</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f172a">
 <style>
 *{box-sizing:border-box;font-family:system-ui}
 body{margin:0;background:#0f172a;color:white}
-.header{background:linear-gradient(135deg,#1e40af,#0f172a);padding:22px 20px 28px;text-align:center;border-radius:0 0 28px 28px}
-.logo{font-size:34px;font-weight:800} .logo span{color:#60a5fa}
-.sub{opacity:.8;font-size:12px;margin-top:6px;letter-spacing:1px;text-transform:uppercase}
-.pills{display:flex;gap:8px;justify-content:center;margin:16px 0;flex-wrap:wrap}
-.pill{padding:8px 14px;border-radius:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-size:12px}
-.pill.active{background:white;color:#0f172a;font-weight:800}
-.container{padding:16px;max-width:520px;margin:-18px auto 0}
-.card{background:white;color:#0f172a;border-radius:18px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.3);margin-bottom:12px}
+.header{background:linear-gradient(135deg,#1e40af,#0f172a);padding:20px 20px 24px;text-align:center;border-radius:0 0 24px 24px}
+.logo{font-size:30px;font-weight:800}.logo span{color:#60a5fa}
+.sub{opacity:.8;font-size:11px;margin-top:4px;letter-spacing:1px;text-transform:uppercase}
+.tabs{display:flex;gap:8px;justify-content:center;margin:14px 0}
+.tab{padding:10px 18px;border-radius:20px;background:rgba(255,255,255,.1);font-size:13px;font-weight:700;cursor:pointer}
+.tab.active{background:white;color:#0f172a}
+.container{padding:12px;max-width:540px;margin:0 auto}
+.card{background:white;color:#0f172a;border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:0 8px 20px rgba(0,0,0,.3)}
 .label{font-size:10px;font-weight:800;color:#64748b;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
-.chips{display:flex;gap:8px;flex-wrap:wrap} .chip{padding:7px 12px;border-radius:10px;background:#f1f5f9;font-size:12px;font-weight:700}
-.chip.active{background:#0f172a;color:white}
-input{width:100%;padding:16px;border-radius:12px;border:2px solid #e2e8f0;background:#f8fafc;font-size:15px;font-weight:600}
-.btn{width:100%;padding:16px;background:linear-gradient(135deg,#1e40af,#3b82f6);color:white;border:none;border-radius:12px;font-size:15px;font-weight:800;margin-top:10px}
-.result{background:#0f172a;color:white;border-radius:14px;padding:16px;margin-top:12px;min-height:100px}
-.ans{font-size:20px;font-weight:800;color:#60a5fa} .steps{font-size:12px;opacity:.8;margin-top:8px;white-space:pre-wrap;background:rgba(255,255,255,.06);padding:10px;border-radius:8px}
-.footer{text-align:center;padding:18px;font-size:10px;opacity:.5}
-.exs{display:flex;gap:6px;margin-top:8px;overflow-x:auto} .ex{white-space:nowrap;padding:5px 9px;background:#eff6ff;color:#1e40af;border-radius:7px;font-size:10px;font-weight:700}
+input,select{width:100%;padding:14px;border-radius:10px;border:2px solid #e2e8f0;background:#f8fafc;font-size:14px;font-weight:600}
+.btn{width:100%;padding:14px;background:linear-gradient(135deg,#1e40af,#3b82f6);color:white;border:none;border-radius:10px;font-weight:800;margin-top:8px}
+.result{background:#0f172a;color:white;border-radius:12px;padding:14px;margin-top:10px}
+.ans{font-size:18px;font-weight:800;color:#60a5fa}
+.paper{border:1px solid #e2e8f0;border-radius:10px;padding:10px;margin:8px 0;background:#f8fafc}
+.paper b{font-size:12px;color:#1e40af}.paper p{font-size:13px;margin:6px 0;font-weight:600}
+.paper button{padding:6px 12px;background:#0f172a;color:white;border:none;border-radius:6px;font-size:11px}
+.badge{font-size:9px;background:#dbeafe;color:#1e40af;padding:3px 7px;border-radius:10px}
+.footer{text-align:center;padding:14px;font-size:10px;opacity:.5}
 </style>
 </head>
 <body>
 <div class="header">
 <div class="logo">Math<span>Master</span> PRO</div>
-<div class="sub">CBC • KEPSEA Pathway • Senior School</div>
-<div class="pills">
-<div class="pill">Grade 10</div><div class="pill">Grade 11</div><div class="pill active">Grade 12 • Senior School 🔥</div>
+<div class="sub">CBC • KPSEA Past Papers • Senior School</div>
+<div class="tabs">
+<div class="tab active" id="t1" onclick="showTab(1)">⚡ Solver</div>
+<div class="tab" id="t2" onclick="showTab(2)">📚 KPSEA Papers</div>
 </div>
 </div>
 <div class="container">
+<div id="tab1">
 <div class="card">
-<div class="label">Topic - CBC Senior School</div>
-<div class="chips"><div class="chip active">Algebra</div><div class="chip">Trig</div><div class="chip">Calculus</div><div class="chip">Stats</div></div>
-</div>
-<div class="card">
-<div class="label">Your Question - KEPSEA Style</div>
+<div class="label">KPSEA Solver - Senior School</div>
 <input id="q" placeholder="e.g. x^2 -5x+6=0">
-<div class="exs"><div class="ex" onclick="q.value='x^2 -5x+6=0';solve()">Quadratic</div><div class="ex" onclick="q.value='12*15 + 8/2';solve()">BODMAS</div><div class="ex" onclick="q.value='25% of 200';solve()">% </div></div>
-<button class="btn" onclick="solve()">⚡ SOLVE • KEPSEA READY</button>
-<div class="result" id="result"><div style="opacity:.6;font-size:11px;text-transform:uppercase;letter-spacing:1px">Ready • Offline Mode</div><div style="margin-top:8px">Type your Senior School question.<br><br>✅ CBC Competency Based<br>✅ KEPSEA Pathway<br>✅ No more KCSE (old system)<br><br>We are CBC generation! 🇰🇪</div></div>
+<button class="btn" onclick="solve()">SOLVE • KPSEA MODE</button>
+<div class="result" id="result"><div style="opacity:.6;font-size:11px">READY • OFFLINE</div><div style="margin-top:6px;font-size:13px">Type any question. Works offline.</div></div>
 </div>
-<div class="footer">Built by Mourice Otieno • Nairobi • 2026<br>KEPSEA • CBC Senior School • v3.0</div>
+</div>
+<div id="tab2" style="display:none">
+<div class="card">
+<div class="label">Filter Past Papers</div>
+<select id="filter" onchange="renderPapers()">
+<option value="all">All - KPSEA 2023-2025</option>
+<option value="Grade 6">Grade 6 KPSEA</option>
+<option value="Grade 10">Grade 10</option>
+<option value="Grade 11">Grade 11</option>
+<option value="Grade 12">Grade 12 Senior</option>
+<option value="Algebra">Algebra</option>
+</select>
+<div id="papers"></div>
+</div>
+</div>
+<div class="footer">Built by Mourice Otieno • Nairobi • 2026<br>KPSEA • CBC • v4.0 Past Papers</div>
 </div>
 <script>
+const kpseaPapers=[
+{g:'Grade 6',t:'Numbers',q:'A school has 1,245 pupils. 478 are boys. How many girls?',a:'767 girls',y:'2024'},
+{g:'Grade 6',t:'Fractions',q:'What is 3/4 + 2/3 ?',a:'1 5/12 (17/12)',y:'2023'},
+{g:'Grade 6',t:'Geometry',q:'Area of rectangle length 12m width 8m?',a:'96 m²',y:'2024'},
+{g:'Grade 6',t:'Rate',q:'A car travels 180km in 3 hours. Speed?',a:'60 km/h',y:'2023'},
+{g:'Grade 10',t:'Algebra',q:'Solve: 2x + 5 = 15',a:'x = 5',y:'2024'},
+{g:'Grade 10',t:'Algebra',q:'Factorize: x² -5x +6 =0',a:'(x-2)(x-3), x=2,3',y:'2023'},
+{g:'Grade 11',t:'Trigonometry',q:'Find sin 30° + cos 60°',a:'1 (0.5+0.5)',y:'2024'},
+{g:'Grade 11',t:'Statistics',q:'Mean of 4,6,8,10,12?',a:'8',y:'2024'},
+{g:'Grade 12',t:'Calculus',q:'dy/dx of y = 3x² + 2x -5',a:'6x +2',y:'2025 Senior'},
+{g:'Grade 12',t:'Linear',q:'Solve simultaneous: x+y=10, x-y=4',a:'x=7, y=3',y:'2025 Senior'},
+];
+function showTab(n){
+ document.getElementById('tab1').style.display=n==1?'block':'none';
+ document.getElementById('tab2').style.display=n==2?'block':'none';
+ document.getElementById('t1').classList.toggle('active',n==1);
+ document.getElementById('t2').classList.toggle('active',n==2);
+ if(n==2)renderPapers();
+}
+function renderPapers(){
+ let f=document.getElementById('filter').value;
+ let c=document.getElementById('papers'); c.innerHTML='';
+ kpseaPapers.filter(p=>f=='all'||p.g==f||p.t==f).forEach(p=>{
+   c.innerHTML+=`<div class=paper><b><span class=badge>${p.g}</span> ${p.t} • ${p.y}</b><p>${p.q}</p><button onclick="this.nextElementSibling.style.display='block';this.style.display='none'">Show Answer</button><div style=display:none><div class=ans style=font-size:14px;color:#0f172a>✅ ${p.a}</div><small>Competency: ${p.t} - CBC</small></div></div>`;
+ });
+}
 function solve(){
  let v=document.getElementById('q').value.trim(); let r=document.getElementById('result');
  if(!v){r.innerHTML='Type question!';return;}
  let quad=v.match(/([-\d]*)x\^2\s*([+-])\s*(\d+)x\s*([+-])\s*(\d+)\s*=\s*0/i);
- if(quad){let a=parseInt(quad[1]||'1')||1;if(quad[1]=='-')a=-1;let b=parseInt(quad[2]+quad[3]);let c=parseInt(quad[4]+quad[5]);let D=b*b-4*a*c;if(D<0){r.innerHTML=`<div class=ans>No real roots</div><div class=steps>D=${D}</div>`;return;}let x1=(-b+Math.sqrt(D))/(2*a);let x2=(-b-Math.sqrt(D))/(2*a);r.innerHTML=`<div style=font-size:11px;opacity:.6>KEPSEA • ALGEBRA</div><div class=ans>x = ${x1.toFixed(2)}, ${x2.toFixed(2)}</div><div class=steps>Competency: Solving quadratic equations\nD = ${D}\nStrand: Algebra (CBC Senior School)</div>`;return;}
- try{let clean=v.replace(/[^0-9+\-*/().^% ]/g,'').replace(/\^/g,'**').replace(/%/g,'/100*');if(clean){let ans=eval(clean);r.innerHTML=`<div style=font-size:11px;opacity:.6>SOLVED • KEPSEA PATHWAY</div><div class=ans>${ans}</div><div class=steps>Q: ${v}\nStrand: Numbers & Operations (CBC)\nCompetency demonstrated ✔️</div>`;return;}}catch(e){}
- r.innerHTML=`<div class=ans style=font-size:15px>${v}</div><div class=steps>Try: x^2 -5x+6=0 or 12*15</div>`;
+ if(quad){let a=parseInt(quad[1]||'1')||1;if(quad[1]=='-')a=-1;let b=parseInt(quad[2]+quad[3]);let c=parseInt(quad[4]+quad[5]);let D=b*b-4*a*c;if(D>=0){let x1=(-b+Math.sqrt(D))/(2*a);let x2=(-b-Math.sqrt(D))/(2*a);r.innerHTML=`<div class=ans>x=${x1.toFixed(2)}, ${x2.toFixed(2)}</div><div style=font-size:12px;opacity:.8;margin-top:6px>D=${D} • KPSEA Algebra</div>`;return;}}
+ try{let clean=v.replace(/[^0-9+\-*/().^% ]/g,'').replace(/\^/g,'**').replace(/%/g,'/100*');if(clean){let ans=eval(clean);r.innerHTML=`<div class=ans>${ans}</div><div style=font-size:11px;opacity:.7;margin-top:4px>Q:${v} • KPSEA Pathway</div>`;return;}}catch(e){}
+ r.innerHTML=`<div style=font-size:14px>${v}</div><div style=font-size:11px;opacity:.7>Check Past Papers tab for similar.</div>`;
 }
+renderPapers();
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
 </script>
 </body>
