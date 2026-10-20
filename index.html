@@ -1,206 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MathMaster v8 • CBC Exam</title>
+<title>MATH MASTER by Mourice - CBC Infinite</title>
+<link rel="manifest" href="manifest.json">
 <style>
-*{box-sizing:border-box;font-family:system-ui}body{margin:0;background:#f1f5f9}
-.h{background:#0f172a;color:white;padding:14px;text-align:center;position:sticky;top:0;z-index:99}
-.logo{font-size:22px;font-weight:900}.logo span{color:#60a5fa}
-.tabs{display:flex;gap:5px;justify-content:center;margin-top:10px;flex-wrap:wrap}
-.t{padding:7px 12px;border-radius:18px;background:rgba(255,255,255,.15);font-size:10px;font-weight:800;cursor:pointer}
-.t.active{background:white;color:#0f172a}
-.c{padding:10px;max-width:580px;margin:0 auto}
-.card{background:white;border-radius:12px;padding:12px;margin-bottom:10px;box-shadow:0 3px 10px rgba(0,0,0,.05)}
-.lab{font-size:9px;font-weight:900;color:#64748b;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
-.lesson{background:#0f172a;color:white;border-radius:10px;padding:12px;margin-top:8px;line-height:1.5;font-size:12px}
-.topic{padding:10px;border:2px solid #f1f5f9;border-radius:9px;margin:5px 0;display:flex;justify-content:space-between;cursor:pointer}
-.topic.active{border-color:#1e40af;background:#eff6ff}
-.qbox{background:#f8fafc;border:2px solid #e2e8f0;border-radius:10px;padding:12px;margin:8px 0}
-input,textarea{width:100%;padding:12px;border-radius:8px;border:2px solid #e2e8f0;background:white;font-size:14px;margin-top:8px}
-input:focus{border-color:#1e40af;outline:none}
-.btn{width:100%;padding:12px;background:#1e40af;color:white;border:none;border-radius:8px;font-weight:800;font-size:13px;cursor:pointer;margin-top:8px}
-.btn2{background:#0f172a}.btn3{background:white;color:#0f172a;border:2px solid #e2e8f0}
-.res{background:#0f172a;color:white;border-radius:9px;padding:10px;margin-top:8px;font-size:12px;line-height:1.6}
-.ans{color:#60a5fa;font-weight:800;font-size:16px}
-.exp{background:rgba(255,255,255,.08);padding:8px;border-radius:6px;margin-top:6px;font-size:11px}
-.scoreBox{display:flex;gap:8px;margin:8px 0}.sb{flex:1;background:#f1f5f9;padding:8px;border-radius:8px;text-align:center}.sb b{font-size:16px;display:block}
-.bar{height:6px;background:#e2e8f0;border-radius:10px;overflow:hidden}.fill{height:100%;background:#1e40af;width:0%;transition:.3s}
-.cbc{font-weight:800;color:#1e40af;padding:6px 10px;background:#dbeafe;border-radius:20px;font-size:12px;display:inline-block;margin:4px 0}
-.footer{text-align:center;padding:10px;font-size:9px;opacity:.5}
-.num{width:32px;height:32px;background:#1e40af;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:13px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:linear-gradient(135deg,#6d28d9,#1e40af);min-height:100vh;color:white;padding:12px}
+.header{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.18);padding:14px;border-radius:20px;margin-bottom:12px;backdrop-filter:blur(10px)}
+.logo{width:62px;height:62px;border-radius:16px;object-fit:cover;border:2px solid white;box-shadow:0 4px 10px rgba(0,0,0,0.3)}
+.title h1{font-size:20px;letter-spacing:0.5px} .title span{font-size:12px;opacity:0.9;display:block}
+.badges{margin-left:auto;text-align:right}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-weight:800;font-size:11px;margin:2px}
+.cbc{background:white;color:#2563eb} .inf{background:#facc15;color:#000}
+.top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
+.stat{background:rgba(255,255,255,0.18);padding:10px;border-radius:14px;text-align:center}
+.stat small{font-size:11px;opacity:0.9} .stat b{font-size:20px;display:block;margin-top:2px}
+.card{background:white;color:#1e293b;border-radius:22px;padding:18px;box-shadow:0 12px 30px rgba(0,0,0,0.25)}
+.levels{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.level{padding:11px;border-radius:12px;text-align:center;font-weight:700;cursor:pointer;border:2px solid #e2e8f0;font-size:13px;transition:0.2s}
+.level.active{background:#6d28d9;color:white;border-color:#6d28d9;transform:scale(1.02)}
+.q{font-size:36px;text-align:center;margin:16px 0;font-weight:900;color:#6d28d9;letter-spacing:1px}
+input{width:100%;padding:14px;border-radius:14px;border:2.5px solid #6d28d9;font-size:22px;text-align:center;font-weight:800;outline:none}
+input:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,0.2)}
+.btn{width:100%;padding:14px;background:linear-gradient(90deg,#6d28d9,#2563eb);color:white;border:none;border-radius:14px;font-size:17px;font-weight:800;margin-top:10px;cursor:pointer}
+.btn:active{transform:scale(0.98)}
+#fb{text-align:center;margin-top:10px;font-weight:800;min-height:22px;font-size:14px}
+.endless-info{text-align:center;margin-top:12px;font-size:11px;color:#64748b;background:#f1f5f9;padding:8px;border-radius:10px}
+.footer{text-align:center;margin-top:12px;font-size:11px;opacity:0.85}
 </style>
 </head>
 <body>
-<div class="h">
-<div class="logo">Math<span>Master</span> v8 CBC EXAM</div>
-<div style="font-size:9px;opacity:.7;margin-top:4px">INFINITE QUESTIONS • TYPE ANSWER • SUBMIT • FINAL MARKING</div>
-<div class="tabs">
-<div class="t active" onclick="sh(1)" id="t1">📖 LESSONS</div>
-<div class="t" onclick="sh(2)" id="t2">❓ CBC TEST</div>
-<div class="t" onclick="sh(3)" id="t3">💬 YOU ASK</div>
-<div class="t" onclick="sh(4)" id="t4">🏆 RESULTS</div>
+
+<div class="header">
+<img src="IMG-20261020-WA6973.jpg" alt="Math Master Logo" class="logo">
+<div class="title"><h1>MATH MASTER</h1><span>by Mourice - CBC</span></div>
+<div class="badges">
+<div class="badge cbc">CBC ✓</div><br>
+<div class="badge inf">∞ ENDLESS</div>
 </div>
 </div>
-<div class="c">
-<div id="b1">
-<div class="card"><div class="lab">CBC Topics - Infinite Lessons</div><div id="topics"></div><div id="lesBox"></div></div>
+
+<div class="top">
+<div class="stat"><small>SCORE</small><b id="score">0</b></div>
+<div class="stat"><small>QUESTION</small><b id="qno">1 / ∞</b></div>
+<div class="stat"><small>STREAK</small><b id="streak">0 🔥</b></div>
 </div>
-<div id="b2" style="display:none">
+
 <div class="card">
-<div class="lab">CBC Exam - Type Your Answer - No Choices</div>
-<div class="scoreBox"><div class="sb"><b id="qNow">0</b><small>Question</small></div><div class="sb"><b id="qTotal">10</b><small>Total</small></div><div class="sb"><b id="perc">-</b><small>CBC Level</small></div></div>
-<div class="bar"><div class="fill" id="fill"></div></div>
-<div id="prac"></div>
+<div class="levels">
+<div class="level active" onclick="setL('easy',this)">Grade 1-3<br><small>Easy</small></div>
+<div class="level" onclick="setL('medium',this)">Grade 4-6<br><small>Medium</small></div>
+<div class="level" onclick="setL('hard',this)">Grade 7-9<br><small>Hard</small></div>
+<div class="level" onclick="setL('expert',this)">Expert<br><small>∞ Infinite</small></div>
 </div>
+
+<div class="q" id="question">12 + 8 = ?</div>
+<input type="number" id="answer" placeholder="Type answer here" inputmode="numeric">
+<button class="btn" onclick="checkAnswer()">CHECK & NEXT ∞</button>
+<div id="fb"></div>
+<div class="endless-info">♾️ Infinite Questions Mode - This never ends! Questions keep coming forever - Practice non-stop!</div>
 </div>
-<div id="b3" style="display:none">
-<div class="card">
-<div class="lab">Ask App - Homework Help</div>
-<textarea id="ask" rows="2" placeholder="Type: x^2 -5x+6=0 or area rectangle 12 by 8"></textarea>
-<button class="btn" onclick="solveAsk()">Ask App → Steps</button>
-<div id="askRes"></div>
-</div>
-</div>
-<div id="b4" style="display:none">
-<div class="card"><div class="lab">Last CBC Results</div><div id="resultsBox">No results yet. Do test first!</div><button class="btn btn3" onclick="resetRes()">Reset</button></div>
-</div>
-<div class="footer">By Mourice Otieno • v8.0 Infinite CBC • 2026</div>
-</div>
+
+<div class="footer">© 2026 MATH MASTER by Mourice | CBC Aligned | Endless Learning | Nairobi, KE</div>
+
 <script>
-const lessons=[
-{id:'algebra',n:'Algebra',s:'Solving Equations - Infinite',l:`<div class=lesson><b>How to solve x + a = b</b><br>x = b - a (move + to other side becomes -)<br><br><b>Example:</b> x+7=15 → x=15-7=8<br><b>CBC Tip:</b> Check answer by putting back: 8+7=15 ✓</div>`},
-{id:'frac',n:'Fractions',s:'Adding Fractions - Infinite',l:`<div class=lesson><b>Adding Fractions</b><br>1. Find LCM of denominators<br>2. Convert<br>3. Add<br><b>Ex:</b> 1/2+1/3 = 3/6+2/6=5/6<br><b>Mistake:</b> Never add denominators!</div>`},
-{id:'geo',n:'Geometry',s:'Area & Perimeter - Infinite',l:`<div class=lesson><b>Area Rectangle:</b> L × W<br><b>Triangle:</b> ½×b×h<br><b>Circle:</b> πr²<br><b>Ex:</b> 12m by 8m = 96 m²<br>Unit is m² not m</div>`},
-{id:'trig',n:'Trigonometry',s:'Grade 11-12 - Infinite',l:`<div class=lesson><b>SOH CAH TOA</b><br>sin = Opposite/Hypotenuse<br>sin30=0.5 is standard<br>cos60=0.5, sin60≈0.866</div>`},
-{id:'mean',n:'Mean & Speed',s:'Data - Infinite',l:`<div class=lesson><b>Mean:</b> Sum ÷ Number<br><b>Ex:</b> Mean of 4,6,8,10 =28÷4=7<br><b>Speed:</b> Distance ÷ Time</div>`},
-];
+// MATH MASTER - Infinite Endless Questions Engine by Mourice
+let score=0, streak=0, qnum=1, currentLevel='easy', a,b,op,correctAns;
 
-function getCBC(p){if(p>=80)return"Exceeding Expectation 🌟";if(p>=60)return"Meeting Expectation ✅";if(p>=40)return"Approaching Expectation ⚠️";return"Below Expectation ❌";}
-function getCBCSmall(p){if(p>=80)return"Exceeding";if(p>=60)return"Meeting";if(p>=40)return"Approaching";return"Below";}
+function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
 
-// INFINITE GENERATORS
-function genAlgebra(){
- let type=Math.floor(Math.random()*3);
- if(type==0){let a=Math.floor(Math.random()*20)+1;let b=Math.floor(Math.random()*30)+a;let ans=b-a;return{q:`Solve: x + ${a} = ${b}`,ans:ans,ex:`Move +${a} to other side it becomes -${a}. So x = ${b} - ${a} = ${ans}. Check: ${ans}+${a}=${b} ✓`,topic:'algebra',hint:`Answer is number: ${b}-${a}`}}
- if(type==1){let a=Math.floor(Math.random()*9)+2;let x=Math.floor(Math.random()*10)+1;let b=a*x;return{q:`Solve: ${a}x = ${b} (find x)`,ans:x,ex:`Divide both sides by ${a}. x = ${b} ÷ ${a} = ${x}`,topic:'algebra'}}
- let r1=Math.floor(Math.random()*5)+1;let r2=Math.floor(Math.random()*5)+r1+1;let sum=r1+r2;let prod=r1*r2;return{q:`Solve: x² - ${sum}x + ${prod} = 0 (Give SMALLER x)`,ans:Math.min(r1,r2),ex:`Find 2 numbers that multiply to ${prod} and add to ${sum}. They are ${r1} and ${r2}. So (x-${r1})(x-${r2})=0 → x=${r1} or ${r2}. Smaller is ${Math.min(r1,r2)}`,topic:'algebra'}}
-}
-function genFrac(){
- let a=Math.floor(Math.random()*5)+1;let b=Math.floor(Math.random()*8)+2;let c=Math.floor(Math.random()*5)+1;let d=Math.floor(Math.random()*8)+2;if(b==d)d++;
- let lcm=b*d; // simple
- let ansNum=a*d + c*b; // actually for demo keep simple
- // Use simple fractions like 1/2+1/3
- let simples=[[1,2,1,3,5,6],[1,4,1,4,2,4],[2,3,1,3,1,1],[3,4,1,4,1,1]];
- let s=simples[Math.floor(Math.random()*simples.length)];
- return{q:`What is ${s[0]}/${s[1]} + ${s[2]}/${s[3]} ? Give answer as decimal (e.g. 0.83) or fraction`,ans:s[4]/s[5],ans2:`${s[4]}/${s[5]}`,ex:`LCM of ${s[1]} and ${s[3]} is ${s[1]*s[3]}. ${s[0]}/${s[1]}=${s[0]*s[3]}/${s[1]*s[3]}, ${s[2]}/${s[3]}=${s[2]*s[1]}/${s[1]*s[3]}. Sum = ${s[4]}/${s[5]} = ${(s[4]/s[5]).toFixed(2)}`,topic:'frac'}}
-function genGeo(){
- let L=Math.floor(Math.random()*20)+5;let W=Math.floor(Math.random()*15)+3;
- return{q:`Find area of rectangle: Length ${L}m, Width ${W}m (Type number only)`,ans:L*W,ex:`Area = L × W = ${L} × ${W} = ${L*W} m². If you got ${L+W}, you did perimeter not area.`,topic:'geo'}}
-function genMean(){
- let n1=Math.floor(Math.random()*10)+1;let n2=Math.floor(Math.random()*10)+1;let n3=Math.floor(Math.random()*10)+1;let n4=Math.floor(Math.random()*10)+1;
- let sum=n1+n2+n3+n4;let mean=sum/4;
- return{q:`Find mean of ${n1}, ${n2}, ${n3}, ${n4}`,ans:mean,ex:`Mean = Sum ÷ Number = (${n1}+${n2}+${n3}+${n4})=${sum} ÷ 4 = ${mean}`,topic:'mean'}}
-function genSpeed(){
- let d=Math.floor(Math.random()*5+1)*60;let t=Math.floor(Math.random()*4)+2;let s=d/t;
- return{q:`A car travels ${d}km in ${t} hours. Find speed in km/h`,ans:s,ex:`Speed = Distance ÷ Time = ${d} ÷ ${t} = ${s} km/h`,topic:'geo'}}
-
-function genRandomQ(topicFilter){
- if(topicFilter=='algebra')return genAlgebra();
- if(topicFilter=='frac')return genFrac();
- if(topicFilter=='geo')return Math.random()>0.5?genGeo():genSpeed();
- if(topicFilter=='mean')return genMean();
- let all=[genAlgebra,genFrac,genGeo,genMean,genSpeed];
- return all[Math.floor(Math.random()*all.length)]();
+function setL(lvl, el){
+currentLevel=lvl;
+document.querySelectorAll('.level').forEach(e=>e.classList.remove('active'));
+el.classList.add('active');
+qnum=1;
+newQuestion();
 }
 
-let curT='algebra',testQs=[],userAns=[],currentIdx=0,NUM_Q=10;
+function newQuestion(){
+// INFINITE QUESTION GENERATOR - Never repeats same, endless
+if(currentLevel==='easy'){
+a=rand(1,20); b=rand(1,20); op='+'; correctAns=a+b;
+}else if(currentLevel==='medium'){
+a=rand(10,90); b=rand(1,50);
+let ops=['+','-']; op=ops[rand(0,1)];
+correctAns= op==='+' ? a+b : a-b;
+if(correctAns<0){a=rand(20,90); b=rand(1,20); correctAns=a-b; op='-';}
+}else if(currentLevel==='hard'){
+a=rand(2,12); b=rand(2,12); op='×'; correctAns=a*b;
+}else{
+let type=rand(1,3);
+if(type===1){a=rand(20,99); b=rand(10,99); op='+'; correctAns=a+b}
+else if(type===2){a=rand(30,99); b=rand(10,50); op='-'; correctAns=a-b}
+else{a=rand(3,15); b=rand(2,15); op='×'; correctAns=a*b}
+}
+document.getElementById('question').textContent=`${a} ${op} ${b} = ?`;
+document.getElementById('qno').textContent=`${qnum} / ∞`;
+document.getElementById('answer').value='';
+document.getElementById('answer').focus();
+}
 
-function renderT(){let h='';lessons.forEach(l=>{h+=`<div class="topic ${l.id==curT?'active':''}" onclick="openL('${l.id}')"><div><b>${l.n}</b><br><small style=opacity:.6>${l.s}</small></div><div>→</div></div>`});document.getElementById('topics').innerHTML=h;}
-function openL(id){curT=id;renderT();let l=lessons.find(x=>x.id==id);document.getElementById('lesBox').innerHTML=l.l+`<button class=btn onclick="startP('${id}')">Start ${l.n} Test (10 Qs) →</button>`;}
-function sh(n){[1,2,3,4].forEach(i=>{document.getElementById('b'+i).style.display=i==n?'block':'none';document.getElementById('t'+i).classList.toggle('active',i==n);});if(n==4)showRes();}
-function startP(topic){
- NUM_Q=10;testQs=[];userAns=[];currentIdx=0;
- for(let i=0;i<NUM_Q;i++)testQs.push(genRandomQ(topic||null));
- sh(2);showCurrentQ();
-}
-function showCurrentQ(){
- if(currentIdx>=testQs.length){finalMark();return;}
- let qq=testQs[currentIdx];
- document.getElementById('qNow').innerText=currentIdx+1;
- document.getElementById('qTotal').innerText=testQs.length;
- document.getElementById('fill').style.width=(currentIdx/testQs.length*100)+'%';
- document.getElementById('perc').innerText=getCBCSmall(0);
- document.getElementById('prac').innerHTML=`<div class=qbox><div><span class=num>${currentIdx+1}</span> <b style=margin-left:8px>${qq.q}</b></div><div style=font-size:11px;opacity:.6;margin-top:6px>Topic: ${qq.topic} • Type your answer below (no choices)</div><input id=userInput type=text placeholder="Type your answer here... e.g. 8 or 96 or 0.83" autocomplete=off><button class=btn onclick="submitAns()">Submit Answer →</button><div style=margin-top:8px;font-size:11px>Question ${currentIdx+1} of ${testQs.length} • Answer cannot be empty</div></div>`;
- setTimeout(()=>document.getElementById('userInput').focus(),100);
-}
-function submitAns(){
- let inp=document.getElementById('userInput').value.trim();
- if(!inp){alert("Please type your answer first!");return;}
- userAns[currentIdx]=inp;
- currentIdx++;
- showCurrentQ();
-}
-function finalMark(){
- let score=0;let details=[];
- for(let i=0;i<testQs.length;i++){
-  let q=testQs[i];let u=userAns[i]||"";
-  let correct=false;
-  let uNum=parseFloat(u);
-  if(!isNaN(uNum)){
-   if(Math.abs(uNum - q.ans) < 0.01)correct=true;
-   if(q.ans2 && u.replace(/\s/g,'')==q.ans2)correct=true;
-   if(u.includes('/') && q.ans2 && u.replace(/\s/g,'')==q.ans2)correct=true;
-  }else{
-   if(u.trim()==q.ans2)correct=true;
-  }
-  if(correct)score++;
-  details.push({q:q.q,correct:correct,user:u,trueAns:q.ans2||q.ans,ex:q.ex,topic:q.topic});
- }
- let pct=Math.round(score/testQs.length*100);
- let cbc=getCBC(pct);
- let html=`<div class=qbox style=text-align:center><b>🎉 CBC Exam Marked!</b><br><br><div style=font-size:36px;font-weight:900>${score}/${testQs.length}</div><div style=font-size:20px>${pct}%</div><div class=cbc style=margin-top:8px>${cbc}</div><div style=margin-top:10px;font-size:11px;text-align:left;background:white;padding:8px;border-radius:6px><b>CBC Scale:</b><br>80-100% Exceeding 🌟<br>60-79% Meeting ✅<br>40-59% Approaching ⚠️<br>Below 40% Below ❌</div></div>`;
- html+=`<div style=margin-top:10px>`;
- details.forEach((d,i)=>{
-  if(d.correct){
-   html+=`<div class=qbox style=border-color:#16a34a;background:#f0fdf4><b>Q${i+1}: ✅ Correct</b><br>${d.q}<br><small>Your answer: <b>${d.user}</b> | Correct: ${d.trueAns}</small><div class=exp style=background:#dcfce7;color:#14532d>${d.ex}</div></div>`;
-  }else{
-   html+=`<div class=qbox style=border-color:#ef4444;background:#fef2f2><b>Q${i+1}: ❌ Wrong</b><br>${d.q}<br><small>Your answer: <b style=color:#ef4444>${d.user||'No answer'}</b> | Correct: <b style=color:#16a34a>${d.trueAns}</b></small><div class=exp style=background:#fee2e2;color:#7f1d1d><b>Where you went wrong + Simple Explanation:</b><br>${d.ex}<br><br><b>Simple way:</b> Read the question again, write formula, put numbers, calculate carefully.</div></div>`;
-  }
- });
- html+=`</div><button class=btn onclick="startP()">🔄 Redo New Test (New Questions)</button><button class=btn btn2 onclick="startP('algebra')">📖 Redo Algebra Only (New Qs)</button><button class=btn btn3 onclick="sh(4)">🏆 View Results Summary</button>`;
- document.getElementById('prac').innerHTML=html;
- document.getElementById('fill').style.width='100%';
- document.getElementById('perc').innerText=getCBCSmall(pct);
- // Save for results tab
- localStorage.setItem('mm_last',JSON.stringify({score,pct,cbc,details}));
- showRes();
-}
-function showRes(){
- let data=localStorage.getItem('mm_last');
- if(!data){document.getElementById('resultsBox').innerHTML='No results yet. Do CBC TEST tab first!';return;}
- let j=JSON.parse(data);
- let weak={};j.details.forEach(d=>{if(!d.correct)weak[d.topic]=(weak[d.topic]||0)+1;});
- let html=`<div class=scoreBox><div class=sb><b>${j.score}</b>Correct</div><div class=sb><b>${j.details.length-j.score}</b>Wrong</div><div class=sb><b>${j.pct}%</b>${getCBCSmall(j.pct)}</div></div><div style=text-align:center><span class=cbc>${j.cbc}</span></div><div style=margin-top:10px><b>Weak Areas:</b><br>`;
- if(Object.keys(weak).length==0)html+=`🎉 No weak areas - Exceeding Expectation!`;
- else for(let k in weak)html+=`⚠️ ${k}: ${weak[k]} mistakes - <a href="#" onclick="openL('${k}');sh(1)">Re-learn</a><br>`;
- html+=`</div><div style=margin-top:10px;font-size:11px><b>Last Test:</b><br>`+j.details.map((d,i)=>`${d.correct?'✅':'❌'} Q${i+1}: ${d.q} → You: ${d.user} | Ans: ${d.trueAns}`).join('<br>')+`</div>`;
- document.getElementById('resultsBox').innerHTML=html;
-}
-function resetRes(){localStorage.clear();document.getElementById('resultsBox').innerHTML='Reset done.';document.getElementById('prac').innerHTML='<div class=qbox>Reset done! Start new test.</div>';}
-function solveAsk(){
- let v=document.getElementById('ask').value.trim();let r=document.getElementById('askRes');
- if(!v){r.innerHTML='<div class=res>Please type!</div>';return;}
- try{
-  let m=v.match(/([-\d]*)x\^2\s*([+-])\s*(\d+)x\s*([+-])\s*(\d+)/i);
-  if(m){let a=parseInt(m[1]||'1')||1;if(m[1]=='-')a=-1;let b=parseInt(m[2]+m[3]);let c=parseInt(m[4]+m[5]);let D=b*b-4*a*c;if(D>=0){let x1=(-b+Math.sqrt(D))/(2*a);let x2=(-b-Math.sqrt(D))/(2*a);r.innerHTML=`<div class=res><div class=ans>x = ${x1.toFixed(2)}, ${x2.toFixed(2)}</div><div class=exp>a=${a},b=${b},c=${c}, D=${D}</div></div>`;return;}}
-  if(v.toLowerCase().includes('area')){let nums=v.match(/\d+/g);if(nums&&nums.length>=2){r.innerHTML=`<div class=res><div class=ans>Area = ${nums[0]*nums[1]} m²</div></div>`;return;}}
-  let c2=v.replace(/[^0-9+\-*/().]/g,'');if(c2&&/\d/.test(c2)){r.innerHTML=`<div class=res><div class=ans>= ${eval(c2)}</div></div>`;return;}
- }catch(e){}
- r.innerHTML=`<div class=res>Try: x^2 -5x+6=0</div>`;
-}
-renderT();openL('algebra');
-</script>
-</body>
-</html>
+function checkAnswer(){
+let val=parseInt(document.getElementById('answer').value);
+let fb=document.getElementById('fb');
+if(isNaN(val)){fb.innerHTML='<span style="color:#e11d48">⚠️ Type your answer!</span>';return}
+if(val===correctAns){
+score+=10; streak++; qnum++;
+fb.innerHTML='<span style="color:#16a34a">✅ CORRECT! +
