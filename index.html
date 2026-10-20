@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MathMaster School v6 • Complete</title>
+<title>MathMaster SCHOOL v7 • CBC</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f172a">
 <style>
@@ -23,21 +23,23 @@
 .lesson h4{color:#60a5fa;margin:6px 0;font-size:13px}
 .qbox{background:#f8fafc;border:2px solid #e2e8f0;border-radius:10px;padding:10px;margin:8px 0}
 .opt{padding:9px;background:white;border:1px solid #e2e8f0;border-radius:7px;margin:4px 0;font-size:12px;cursor:pointer}
-.opt.sel{border-color:#1e40af;background:#eff6ff} .opt.ok{background:#dcfce7;border-color:#16a34a} .opt.bad{background:#fee2e2;border-color:#ef4444}
-input,select,textarea{width:100%;padding:11px;border-radius:8px;border:2px solid #e2e8f0;background:#f8fafc;font-size:13px}
+.opt.ok{background:#dcfce7;border-color:#16a34a} .opt.bad{background:#fee2e2;border-color:#ef4444}
+input,textarea{width:100%;padding:11px;border-radius:8px;border:2px solid #e2e8f0;background:#f8fafc;font-size:13px}
 .btn{width:100%;padding:11px;background:#1e40af;color:white;border:none;border-radius:8px;font-weight:800;font-size:12px;cursor:pointer;margin-top:6px}
+.btn2{background:#0f172a} .btn3{background:white;color:#0f172a;border:2px solid #e2e8f0}
 .res{background:#0f172a;color:white;border-radius:9px;padding:10px;margin-top:8px;font-size:12px;line-height:1.5}
 .ans{color:#60a5fa;font-weight:800;font-size:15px}
 .exp{background:rgba(255,255,255,.07);padding:8px;border-radius:6px;margin-top:6px;font-size:11px}
-.scoreBox{display:flex;gap:8px;margin:8px 0}.sb{flex:1;background:#f1f5f9;padding:8px;border-radius:8px;text-align:center}.sb b{font-size:16px;display:block}
-.bar{height:5px;background:#e2e8f0;border-radius:10px;overflow:hidden}.fill{height:100%;background:#1e40af;width:0%}
+.scoreBox{display:flex;gap:8px;margin:8px 0}.sb{flex:1;background:#f1f5f9;padding:8px;border-radius:8px;text-align:center}.sb b{font-size:14px;display:block}
+.bar{height:6px;background:#e2e8f0;border-radius:10px;overflow:hidden}.fill{height:100%;background:#1e40af;width:0%;transition:.3s}
 .footer{text-align:center;padding:10px;font-size:9px;opacity:.5}
+.cbc{font-weight:800;color:#1e40af;padding:4px 8px;background:#dbeafe;border-radius:10px;font-size:11px;display:inline-block;margin:4px 0}
 </style>
 </head>
 <body>
 <div class="h">
-<div class="logo">Math<span>Master</span> SCHOOL v6</div>
-<div class="sub">Lessons • App asks + You ask • Marking • Results • KPSEA</div>
+<div class="logo">Math<span>Master</span> SCHOOL v7</div>
+<div class="sub">CBC • KPSEA • Exceeding • Meeting • Approaching • Below</div>
 <div class="tabs">
 <div class="t active" onclick="sh(1)" id="t1">📖 LESSONS</div>
 <div class="t" onclick="sh(2)" id="t2">❓ APP ASKS YOU</div>
@@ -47,12 +49,12 @@ input,select,textarea{width:100%;padding:11px;border-radius:8px;border:2px solid
 </div>
 <div class="c">
 <div id="b1">
-<div class="card"><div class="lab">Topics - Tap to Learn (App Teaches)</div><div id="topics"></div><div id="lesBox"></div></div>
+<div class="card"><div class="lab">CBC Topics - Tap to Learn</div><div id="topics"></div><div id="lesBox"></div></div>
 </div>
 <div id="b2" style="display:none">
 <div class="card">
-<div class="lab">App Gives You Questions • Marks You • Explains Mistakes</div>
-<div class="scoreBox"><div class="sb"><b id="sc">0</b><small>Score</small></div><div class="sb"><b id="tot">0/0</b><small>Done</small></div><div class="sb"><b id="perc">0%</b><small>Pass</small></div></div>
+<div class="lab">CBC Assessment • App Asks • Marks • Explains</div>
+<div class="scoreBox"><div class="sb"><b id="sc">0</b><small>Score</small></div><div class="sb"><b id="tot">0/0</b><small>Done</small></div><div class="sb"><b id="perc">-</b><small>CBC Level</small></div></div>
 <div class="bar"><div class="fill" id="fill"></div></div>
 <div id="prac"></div>
 <button class="btn" onclick="nextQ()" id="nxt" style="display:none">Next Question →</button>
@@ -60,86 +62,92 @@ input,select,textarea{width:100%;padding:11px;border-radius:8px;border:2px solid
 </div>
 <div id="b3" style="display:none">
 <div class="card">
-<div class="lab">You Ask - App Solves With Steps (For Homework)</div>
-<textarea id="ask" rows="2" placeholder="Type your question: e.g. Solve x^2 -5x+6=0 or Find area of rectangle 12 by 8"></textarea>
-<button class="btn" onclick="solveAsk()">Ask App → Get Steps + Answer</button>
+<div class="lab">You Ask - App Solves With Steps</div>
+<textarea id="ask" rows="2" placeholder="e.g. x^2 -5x+6=0 or area rectangle 12 by 8"></textarea>
+<button class="btn" onclick="solveAsk()">Ask App → Get Steps</button>
 <div id="askRes"></div>
 </div>
 </div>
 <div id="b4" style="display:none">
-<div class="card"><div class="lab">Your Results & Weak Areas</div><div id="resultsBox">No results yet. Do Practice tab first!</div><button class="btn" onclick="resetRes()">Reset Results</button></div>
+<div class="card"><div class="lab">CBC Results & Competency</div><div id="resultsBox">No results yet. Do Practice tab!</div><button class="btn" onclick="resetRes()">Reset All</button></div>
 </div>
-<div class="footer">Built by Mourice Otieno • v6.0 Complete • Nairobi</div>
+<div class="footer">By Mourice Otieno • v7.0 CBC Final • Nairobi 2026</div>
 </div>
 <script>
 const lessons=[
-{id:'algebra',n:'Algebra',s:'Grade 10-12 • Solving Equations',l:`<div class=lesson><h4>What is x?</h4>x is unknown number.<br><b>Rule 1:</b> x + a = b → x = b-a<br><b>Example:</b> x+7=15 → x=8<br><h4>Quadratic: x²-5x+6=0</h4>Find two numbers that multiply to 6 and add to -5 → -2 and -3<br>So (x-2)(x-3)=0 → x=2 or 3<br><b>KPSEA Marking:</b> 1 mark factorization, 1 mark answer.</div>`},
-{id:'frac',n:'Fractions',s:'Grade 6 KPSEA',l:`<div class=lesson><h4>Adding Fractions</h4>LCM method.<br>1/2 + 1/3 = 3/6 + 2/6 =5/6<br><b>Common mistake:</b> Don't add denominators! 1/2+1/3 ≠ 2/5<br><h4>KPSEA 2024:</h4> 3/4+2/3 = 9/12+8/12=17/12=1 5/12</div>`},
-{id:'geo',n:'Geometry',s:'Area & Perimeter',l:`<div class=lesson><h4>Area Formulas</h4>Rectangle: L×W<br>Triangle: ½×b×h<br>Circle: πr²<br><b>Example:</b> 12m by 8m =96m² (KPSEA 2024 asked this!)<br><b>Mistake:</b> Don't forget units - m² not m!</div>`},
-{id:'trig',n:'Trigonometry',s:'Grade 11-12',l:`<div class=lesson><h4>sin cos tan</h4>sin30=0.5, sin60=0.866<br>Use SOH CAH TOA<br><b>Example:</b> Find height if sin30= opposite/10=0.5 → opposite=5</div>`},
+{id:'algebra',n:'Algebra',s:'Grade 10-12',l:`<div class=lesson><h4>What is x?</h4>x + a = b → x = b-a<br><b>Ex:</b> x+7=15 → x=8<br><h4>Quadratic</h4>x²-5x+6=0 → (x-2)(x-3)=0 → x=2,3<br><b>CBC:</b> Meeting Expectation if you factorize.</div>`},
+{id:'frac',n:'Fractions',s:'Grade 6 KPSEA',l:`<div class=lesson><h4>Adding Fractions</h4>1/2+1/3=3/6+2/6=5/6<br><b>Mistake:</b> 1/2+1/3 ≠ 2/5<br><h4>KPSEA 2024</h4>3/4+2/3=17/12=1 5/12</div>`},
+{id:'geo',n:'Geometry',s:'Area',l:`<div class=lesson><h4>Area Formulas</h4>Rectangle: L×W<br>Triangle: ½×b×h<br>Circle: πr²<br><b>Ex:</b> 12×8=96m² (KPSEA 2024)<br><b>Mistake:</b> Unit is m² not m!</div>`},
+{id:'trig',n:'Trigonometry',s:'Grade 11-12',l:`<div class=lesson><h4>sin cos tan</h4>sin30=0.5, sin60=0.866<br>SOH CAH TOA</div>`},
 ];
 const qBank=[
-{q:'x + 7 = 15, find x',o:['8','7','22','15'],a:0,ex:'x = 15-7 =8. You move +7 to other side it becomes -7. If you chose 22, you added instead of subtracting!',t:'algebra'},
-{q:'Solve x²-5x+6=0',o:['x=2,3','x=1,6','x=-2,-3','x=5,6'],a:0,ex:'(x-2)(x-3)=0 because -2 × -3 =6 and -2 + -3 = -5. Wrong answers come from wrong factor pair.',t:'algebra'},
-{q:'What is 1/2 + 1/3 ?',o:['5/6','2/5','1/5','2/6'],a:0,ex:'LCM of 2 and 3 is 6. 1/2=3/6, 1/3=2/6, sum=5/6. Mistake 2/5 = adding numerators AND denominators - never do that!',t:'frac'},
-{q:'Area of rectangle 12m by 8m?',o:['96 m²','20 m²','96 m','40 m²'],a:0,ex:'Area = L×W =12×8=96. Unit is m². If you got 20, you did L+W (perimeter). If 96m, you forgot square.',t:'geo'},
-{q:'Mean of 4,6,8,10?',o:['7','8','7.5','28'],a:0,ex:'Mean = sum/number = (4+6+8+10)=28/4=7. If 28, you forgot to divide!',t:'algebra'},
-{q:'sin 30° = ?',o:['0.5','0.866','1','0'],a:0,ex:'Standard value: sin30=0.5, cos60=0.5, sin60=√3/2≈0.866. Memorize KPSEA table!',t:'trig'},
-{q:'180km in 3hrs, speed?',o:['60 km/h','90 km/h','180 km/h','60 km'],a:0,ex:'Speed=Distance/Time=180/3=60 km/h. Need km/h, not km. If 90, you divided by 2.',t:'geo'},
+{q:'x + 7 = 15, find x',o:['8','7','22','15'],a:0,ex:'x=15-7=8. If you got 22, you added instead of subtracting.',t:'algebra'},
+{q:'Solve x²-5x+6=0',o:['x=2,3','x=1,6','x=-2,-3','x=5,6'],a:0,ex:'Factors -2 and -3: -2×-3=6, -2+-3=-5. So (x-2)(x-3)=0',t:'algebra'},
+{q:'1/2 + 1/3 = ?',o:['5/6','2/5','1/5','2/6'],a:0,ex:'LCM 6: 3/6+2/6=5/6. 2/5 is wrong - never add denominators!',t:'frac'},
+{q:'Area rectangle 12m by 8m?',o:['96 m²','20 m²','96 m','40 m²'],a:0,ex:'Area=L×W=12×8=96 m². 20 is perimeter (L+W).',t:'geo'},
+{q:'Mean of 4,6,8,10?',o:['7','8','7.5','28'],a:0,ex:'(4+6+8+10)=28/4=7. 28 is sum, you forgot divide.',t:'algebra'},
+{q:'sin 30° = ?',o:['0.5','0.866','1','0'],a:0,ex:'sin30=0.5, cos60=0.5, sin60=√3/2≈0.866 - KPSEA table',t:'trig'},
+{q:'180km in 3hrs, speed?',o:['60 km/h','90 km/h','180 km/h','60 km'],a:0,ex:'Speed=Distance/Time=180/3=60 km/h',t:'geo'},
+{q:'What is 3/4 of 20?',o:['15','5','16','20'],a:0,ex:'3/4 ×20 =60/4=15',t:'frac'},
 ];
-let curT='algebra', qIdx=0, score=0, total=0, answered=false, history=[];
+let curT='algebra',qIdx=0,score=0,total=0,answered=false,history=[];
+function getCBC(p){if(p>=80)return"Exceeding Expectation 🌟";if(p>=60)return"Meeting Expectation ✅";if(p>=40)return"Approaching Expectation ⚠️";return"Below Expectation ❌";}
+function getCBCSmall(p){if(p>=80)return"Exceeding";if(p>=60)return"Meeting";if(p>=40)return"Approaching";return"Below";}
 function renderT(){let h='';lessons.forEach(l=>{h+=`<div class="topic ${l.id==curT?'active':''}" onclick="openL('${l.id}')"><div><b>${l.n}</b><br><small style=opacity:.6>${l.s}</small></div><div>→</div></div>`});document.getElementById('topics').innerHTML=h;}
 function openL(id){curT=id;renderT();let l=lessons.find(x=>x.id==id);document.getElementById('lesBox').innerHTML=l.l+`<button class=btn onclick="startP('${id}')">Practice ${l.n} Now →</button>`;}
 function sh(n){[1,2,3,4].forEach(i=>{document.getElementById('b'+i).style.display=i==n?'block':'none';document.getElementById('t'+i).classList.toggle('active',i==n);});if(n==2&&qIdx==0)nextQ();if(n==4)showRes();}
 function startP(t){qIdx=0;score=0;total=0;history=[];sh(2);nextQ(t);}
 function nextQ(filter){
- if(qIdx>=qBank.length){document.getElementById('prac').innerHTML=`<div class=qbox><b>🎉 Done! Final Score ${score}/${qBank.length}</b><p>Check RESULTS tab to see weak areas.</p></div>`;document.getElementById('nxt').style.display='none';showRes();return;}
+ if(qIdx>=qBank.length){
+  let pct=Math.round(score/qBank.length*100);
+  let cbc=getCBC(pct);
+  document.getElementById('prac').innerHTML=`<div class=qbox style=text-align:center><b>🎉 CBC Assessment Complete!</b><br><br><div style=font-size:32px;font-weight:900>${score}/${qBank.length}</div><div style=font-size:20px;margin:8px 0>${pct}%</div><div class=cbc>${cbc}</div><div style=margin-top:12px;font-size:11px;text-align:left;background:white;padding:8px;border-radius:6px><b>CBC Scale:</b><br>80-100% = Exceeding Expectation 🌟<br>60-79% = Meeting Expectation ✅<br>40-59% = Approaching Expectation ⚠️<br>Below 40% = Below Expectation ❌</div><br><button class=btn onclick="qIdx=0;score=0;total=0;history=[];nextQ();">🔄 Redo Test</button><button class=btn btn2 onclick="qIdx=0;score=0;total=0;history=[];nextQ('algebra');">📖 Redo Algebra Only</button><button class=btn btn3 onclick="sh(4)">🏆 View Detailed Results</button><button class=btn btn3 onclick="qIdx=0;score=0;total=0;history=[];nextQ();sh(1)">📚 Back to Lessons</button></div>`;
+  document.getElementById('nxt').style.display='none';showRes();return;
+ }
  let list=filter?qBank.filter(x=>x.t==filter):qBank;if(filter&&list.length==0)list=qBank;
  let qq=list[qIdx%list.length];
  document.getElementById('prac').innerHTML=`<div class=qbox><p><b>Q${qIdx+1}: ${qq.q}</b></p>${qq.o.map((op,i)=>`<div class=opt id=o${i} onclick="check(${i},${qq.a},'${qq.ex.replace(/'/g,"\\'")}')">${String.fromCharCode(65+i)}. ${op}</div>`).join('')}<div id=exBox style=margin-top:8px></div></div>`;
- answered=false;document.getElementById('nxt').style.display='none';
- updateBar();
+ answered=false;document.getElementById('nxt').style.display='none';updateBar();
 }
 function check(i,correct,ex){
  if(answered)return;answered=true;
  document.querySelectorAll('.opt').forEach(o=>o.style.pointerEvents='none');
  document.getElementById('o'+i).classList.add(i==correct?'ok':'bad');
  if(i!=correct)document.getElementById('o'+correct).classList.add('ok');
- let isCorrect=i==correct; if(isCorrect)score++; total++;
- history.push({q:qBank[qIdx%qBank.length].q,correct:isCorrect,topic:qBank[qIdx%qBank.length].t});
- let msg=isCorrect?`✅ <b>Correct!</b><div class=exp>${ex}</div>`:`❌ <b>Wrong - Here's why:</b><div class=exp>${ex}</div><div class=exp style=background:#fee2e2;color:#7f1d1d><b>Where you went wrong:</b> You chose ${String.fromCharCode(65+i)}. Remember the method above. Try next one!</div>`;
+ let ok=i==correct;if(ok)score++;total++;
+ history.push({q:qBank[qIdx%qBank.length].q,correct:ok,topic:qBank[qIdx%qBank.length].t});
+ let msg=ok?`✅ <b>Correct! ${getCBCSmall(100)}</b><div class=exp>${ex}</div>`:`❌ <b>Wrong - ${getCBCSmall(0)} - Here's why:</b><div class=exp>${ex}</div><div class=exp style=background:#fee2e2;color:#7f1d1d><b>Where you went wrong:</b> You chose ${String.fromCharCode(65+i)}. Review lesson!</div>`;
  document.getElementById('exBox').innerHTML=msg;
  document.getElementById('nxt').style.display='block';
- qIdx++; updateBar(); save();
+ qIdx++;updateBar();save();
 }
-function updateBar(){document.getElementById('sc').innerText=score;document.getElementById('tot').innerText=total+'/'+qBank.length;let p=total?Math.round(score/total*100):0;document.getElementById('perc').innerText=p+'%';document.getElementById('fill').style.width=(qIdx/qBank.length*100)+'%';}
+function updateBar(){document.getElementById('sc').innerText=score;document.getElementById('tot').innerText=total+'/'+qBank.length;let p=total?Math.round(score/total*100):0;document.getElementById('perc').innerText=getCBCSmall(p);document.getElementById('fill').style.width=(qIdx/qBank.length*100)+'%';}
 function showRes(){
  if(history.length==0){document.getElementById('resultsBox').innerHTML='No results yet. Go to APP ASKS YOU tab!';return;}
  let weak={};history.forEach(h=>{if(!h.correct)weak[h.topic]=(weak[h.topic]||0)+1;});
- let html=`<div class=scoreBox><div class=sb><b>${score}</b>Correct</div><div class=sb><b>${history.length-score}</b>Wrong</div><div class=sb><b>${Math.round(score/history.length*100)}%</b>Pass</div></div>`;
- html+=`<div style=margin-top:10px><b>Weak Areas (Need Lessons):</b><br>`;
- if(Object.keys(weak).length==0)html+=`🎉 No weak areas! You are KPSEA ready!`;
- else for(let k in weak){html+=`⚠️ <b>${k}</b>: ${weak[k]} mistakes - <a href="#" onclick="openL('${k}');sh(1)">Re-learn</a><br>`;}
- html+=`</div><div style=margin-top:10px><b>History:</b><br>`+history.map(h=>`${h.correct?'✅':'❌'} ${h.q}`).join('<br>')+`</div>`;
+ let pct=history.length?Math.round(score/history.length*100):0;
+ let html=`<div class=scoreBox><div class=sb><b>${score}</b>Correct</div><div class=sb><b>${history.length-score}</b>Wrong</div><div class=sb><b>${pct}%</b>${getCBCSmall(pct)}</div></div><div style=text-align:center;margin:8px 0><span class=cbc>${getCBC(pct)}</span></div>`;
+ html+=`<div style=margin-top:10px><b>Competency Analysis:</b><br>`;
+ if(Object.keys(weak).length==0)html+=`🎉 <b>Exceeding Expectation!</b> No weak areas!`;
+ else for(let k in weak){html+=`⚠️ <b>${k}</b>: ${weak[k]} gaps - <a href="#" onclick="openL('${k}');sh(1)">Re-learn ${k}</a><br>`;}
+ html+=`</div><div style=margin-top:10px;font-size:11px><b>History:</b><br>`+history.map(h=>`${h.correct?'✅':'❌'} ${h.q} (${h.topic})`).join('<br>')+`</div>`;
  document.getElementById('resultsBox').innerHTML=html;
 }
-function save(){localStorage.setItem('mm_history',JSON.stringify(history));localStorage.setItem('mm_score',score);localStorage.setItem('mm_total',total);}
-function resetRes(){history=[];score=0;total=0;qIdx=0;localStorage.clear();updateBar();document.getElementById('prac').innerHTML='Reset! Start again.';document.getElementById('resultsBox').innerHTML='Reset done.';}
+function save(){localStorage.setItem('mm_h',JSON.stringify(history));localStorage.setItem('mm_s',score);localStorage.setItem('mm_t',total);}
+function resetRes(){history=[];score=0;total=0;qIdx=0;localStorage.clear();updateBar();document.getElementById('prac').innerHTML='<div class=qbox>Reset done! Tap Practice again.</div>';document.getElementById('resultsBox').innerHTML='Reset done.';}
 function solveAsk(){
  let v=document.getElementById('ask').value.trim();let r=document.getElementById('askRes');
  if(!v){r.innerHTML='<div class=res>Please type question!</div>';return;}
- let quad=v.match(/x\^2\s*([+-])\s*(\d+)x\s*([+-])\s*(\d+)/i);
- if(quad||v.includes('x^2')){
-   let m=v.match(/([-\d]*)x\^2\s*([+-])\s*(\d+)x\s*([+-])\s*(\d+)/i);
-   if(m){let a=parseInt(m[1]||'1')||1;let b=parseInt(m[2]+m[3]);let c=parseInt(m[4]+m[5]);let D=b*b-4*a*c;if(D>=0){let x1=(-b+Math.sqrt(D))/(2*a);let x2=(-b-Math.sqrt(D))/(2*a);r.innerHTML=`<div class=res><div class=ans>x = ${x1.toFixed(2)}, ${x2.toFixed(2)}</div><div class=exp><b>Step 1:</b> Identify a=${a}, b=${b}, c=${c}<br><b>Step 2:</b> D=b²-4ac=${D}<br><b>Step 3:</b> x=(-b±√D)/2a<br><b>Marking:</b> 2 marks method, 1 answer</div></div>`;return;}}
- }
- try{let clean=v.replace(/area.*rectangle.*(\d+).*?(\d+)/i,(m,a,b)=>a+'*'+b);let nums=v.match(/\d+/g);if(v.toLowerCase().includes('area')&&nums&&nums.length>=2){let ans=nums[0]*nums[1];r.innerHTML=`<div class=res><div class=ans>Area = ${ans} m²</div><div class=exp>Formula: Length × Width<br>${nums[0]} × ${nums[1]} = ${ans}<br>Unit: m² (not m)</div></div>`;return;}
- let c2=v.replace(/[^0-9+\-*/().^% ]/g,'').replace(/\^/g,'**');if(c2&&/\d/.test(c2)){let ans=eval(c2);r.innerHTML=`<div class=res><div class=ans>= ${ans}</div><div class=exp>Calculation: ${c2}<br>Competency: Numbers & Operations</div></div>`;return;}
+ try{
+  let m=v.match(/([-\d]*)x\^2\s*([+-])\s*(\d+)x\s*([+-])\s*(\d+)/i);
+  if(m){let a=parseInt(m[1]||'1')||1;if(m[1]=='-')a=-1;let b=parseInt(m[2]+m[3]);let c=parseInt(m[4]+m[5]);let D=b*b-4*a*c;if(D>=0){let x1=(-b+Math.sqrt(D))/(2*a);let x2=(-b-Math.sqrt(D))/(2*a);r.innerHTML=`<div class=res><div class=ans>x = ${x1.toFixed(2)}, ${x2.toFixed(2)}</div><div class=exp><b>Step1:</b> a=${a},b=${b},c=${c}<br><b>Step2:</b> D=${D}<br><b>Step3:</b> x=(-b±√D)/2a<br><b>CBC:</b> ${getCBC(100)} if shown</div></div>`;return;}}
+  if(v.toLowerCase().includes('area')){let nums=v.match(/\d+/g);if(nums&&nums.length>=2){let ans=nums[0]*nums[1];r.innerHTML=`<div class=res><div class=ans>Area = ${ans} m²</div><div class=exp>${nums[0]}×${nums[1]}=${ans}<br>Unit m²</div></div>`;return;}}
+  let c2=v.replace(/[^0-9+\-*/().^% ]/g,'').replace(/\^/g,'**');if(c2&&/\d/.test(c2)){let ans=eval(c2);r.innerHTML=`<div class=res><div class=ans>= ${ans}</div><div class=exp>${c2} = ${ans}</div></div>`;return;}
  }catch(e){}
- r.innerHTML=`<div class=res><b>You asked:</b> ${v}<br><div class=exp>Try: "x^2 -5x+6=0" or "area rectangle 12 by 8" or "12*15+8/2"</div></div>`;
+ r.innerHTML=`<div class=res><b>You:</b> ${v}<br><div class=exp>Try: x^2 -5x+6=0</div></div>`;
 }
 renderT();openL('algebra');
-let h=localStorage.getItem('mm_history');if(h){history=JSON.parse(h);score=parseInt(localStorage.getItem('mm_score')||0);total=parseInt(localStorage.getItem('mm_total')||0);updateBar();}
+let h=localStorage.getItem('mm_h');if(h){history=JSON.parse(h);score=parseInt(localStorage.getItem('mm_s')||0);total=parseInt(localStorage.getItem('mm_t')||0);updateBar();}
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
 </script>
 </body>
