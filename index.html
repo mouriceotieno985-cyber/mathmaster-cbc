@@ -3,109 +3,173 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MATH MASTER by Mourice - CBC Infinite</title>
+<title>MATH MASTER by Mourice - CBC Senior</title>
 <link rel="manifest" href="manifest.json">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{background:linear-gradient(135deg,#6d28d9,#1e40af);min-height:100vh;color:white;padding:12px}
-.header{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.18);padding:14px;border-radius:20px;margin-bottom:12px;backdrop-filter:blur(10px)}
-.logo{width:62px;height:62px;border-radius:16px;object-fit:cover;border:2px solid white;box-shadow:0 4px 10px rgba(0,0,0,0.3)}
-.title h1{font-size:20px;letter-spacing:0.5px} .title span{font-size:12px;opacity:0.9;display:block}
+body{background:linear-gradient(135deg,#6d28d9,#1e40af);min-height:100vh;color:white;padding:10px}
+.header{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.18);padding:12px;border-radius:18px;margin-bottom:10px}
+.logo{width:60px;height:60px;border-radius:14px;object-fit:cover;border:2px solid white}
+.title h1{font-size:19px} .title span{font-size:11px;opacity:0.9}
 .badges{margin-left:auto;text-align:right}
-.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-weight:800;font-size:11px;margin:2px}
+.badge{padding:3px 9px;border-radius:20px;font-weight:800;font-size:10px;display:inline-block;margin:2px}
 .cbc{background:white;color:#2563eb} .inf{background:#facc15;color:#000}
-.top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
-.stat{background:rgba(255,255,255,0.18);padding:10px;border-radius:14px;text-align:center}
-.stat small{font-size:11px;opacity:0.9} .stat b{font-size:20px;display:block;margin-top:2px}
-.card{background:white;color:#1e293b;border-radius:22px;padding:18px;box-shadow:0 12px 30px rgba(0,0,0,0.25)}
-.levels{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
-.level{padding:11px;border-radius:12px;text-align:center;font-weight:700;cursor:pointer;border:2px solid #e2e8f0;font-size:13px;transition:0.2s}
-.level.active{background:#6d28d9;color:white;border-color:#6d28d9;transform:scale(1.02)}
-.q{font-size:36px;text-align:center;margin:16px 0;font-weight:900;color:#6d28d9;letter-spacing:1px}
-input{width:100%;padding:14px;border-radius:14px;border:2.5px solid #6d28d9;font-size:22px;text-align:center;font-weight:800;outline:none}
-input:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,0.2)}
-.btn{width:100%;padding:14px;background:linear-gradient(90deg,#6d28d9,#2563eb);color:white;border:none;border-radius:14px;font-size:17px;font-weight:800;margin-top:10px;cursor:pointer}
-.btn:active{transform:scale(0.98)}
-#fb{text-align:center;margin-top:10px;font-weight:800;min-height:22px;font-size:14px}
-.endless-info{text-align:center;margin-top:12px;font-size:11px;color:#64748b;background:#f1f5f9;padding:8px;border-radius:10px}
-.footer{text-align:center;margin-top:12px;font-size:11px;opacity:0.85}
+.top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px}
+.stat{background:rgba(255,255,255,0.18);padding:8px;border-radius:12px;text-align:center}
+.stat small{font-size:10px} .stat b{font-size:18px;display:block}
+.card{background:white;color:#1e293b;border-radius:20px;padding:14px;box-shadow:0 10px 25px rgba(0,0,0,0.25)}
+.grades{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px}
+.grade{padding:10px;border-radius:12px;text-align:center;font-weight:800;cursor:pointer;border:2px solid #e2e8f0;font-size:13px}
+.grade.active{background:#6d28d9;color:white;border-color:#6d28d9}
+.lessons{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+.lesson{padding:9px;border-radius:10px;text-align:center;font-weight:700;cursor:pointer;border:2px solid #e2e8f0;font-size:11px;background:#f8fafc}
+.lesson.active{background:#2563eb;color:white;border-color:#2563eb}
+.q{font-size:26px;text-align:center;margin:12px 0;font-weight:900;color:#6d28d9;min-height:40px}
+input{width:100%;padding:14px;border-radius:12px;border:2.5px solid #6d28d9;font-size:22px;text-align:center;font-weight:800;outline:none}
+.btn{width:100%;padding:13px;background:linear-gradient(90deg,#6d28d9,#2563eb);color:white;border:none;border-radius:12px;font-size:16px;font-weight:800;margin-top:10px;cursor:pointer}
+.btn:active{transform:scale(0.97)}
+#fb{text-align:center;margin-top:8px;font-weight:800;min-height:22px;font-size:13px}
+.result-box{background:#f1f5f9;border-radius:12px;padding:10px;margin-top:10px;text-align:center;border:2px dashed #cbd5e1}
+.tag{padding:5px 12px;border-radius:20px;font-weight:800;font-size:12px;display:inline-block;margin-top:6px}
+.exceed{background:#16a34a;color:white} .meet{background:#2563eb;color:white} .approach{background:#f59e0b;color:white} .below{background:#dc2626;color:white}
+.footer{text-align:center;margin-top:8px;font-size:10px;opacity:0.8}
 </style>
 </head>
 <body>
 
 <div class="header">
-<img src="IMG-20261020-WA6973.jpg" alt="Math Master Logo" class="logo">
+<img src="IMG-20261020-WA6973.jpg" class="logo">
 <div class="title"><h1>MATH MASTER</h1><span>by Mourice - CBC</span></div>
-<div class="badges">
-<div class="badge cbc">CBC ✓</div><br>
-<div class="badge inf">∞ ENDLESS</div>
-</div>
+<div class="badges"><div class="badge cbc">GRADE 10-12</div><br><div class="badge inf">∞ ENDLESS</div></div>
 </div>
 
 <div class="top">
 <div class="stat"><small>SCORE</small><b id="score">0</b></div>
-<div class="stat"><small>QUESTION</small><b id="qno">1 / ∞</b></div>
+<div class="stat"><small>Q</small><b id="qno">1 / ∞</b></div>
 <div class="stat"><small>STREAK</small><b id="streak">0 🔥</b></div>
 </div>
 
 <div class="card">
-<div class="levels">
-<div class="level active" onclick="setL('easy',this)">Grade 1-3<br><small>Easy</small></div>
-<div class="level" onclick="setL('medium',this)">Grade 4-6<br><small>Medium</small></div>
-<div class="level" onclick="setL('hard',this)">Grade 7-9<br><small>Hard</small></div>
-<div class="level" onclick="setL('expert',this)">Expert<br><small>∞ Infinite</small></div>
+<div class="grades">
+<div class="grade active" onclick="setGrade(10,this)">Grade 10</div>
+<div class="grade" onclick="setGrade(11,this)">Grade 11</div>
+<div class="grade" onclick="setGrade(12,this)">Grade 12</div>
 </div>
 
-<div class="q" id="question">12 + 8 = ?</div>
-<input type="number" id="answer" placeholder="Type answer here" inputmode="numeric">
-<button class="btn" onclick="checkAnswer()">CHECK & NEXT ∞</button>
+<div class="lessons">
+<div class="lesson active" onclick="setLesson('Algebra',this)">Algebra</div>
+<div class="lesson" onclick="setLesson('Quadratic',this)">Quadratic</div>
+<div class="lesson" onclick="setLesson('Functions',this)">Functions</div>
+<div class="lesson" onclick="setLesson('Trig',this)">Trig</div>
+<div class="lesson" onclick="setLesson('Stats',this)">Statistics</div>
+<div class="lesson" onclick="setLesson('Calculus',this)">Calculus</div>
+</div>
+
+<div class="q" id="question">Loading...</div>
+<input type="number" id="answer" placeholder="Type answer" inputmode="numeric">
+<button class="btn" onclick="checkAnswer()">CHECK ANSWER ✓</button>
 <div id="fb"></div>
-<div class="endless-info">♾️ Infinite Questions Mode - This never ends! Questions keep coming forever - Practice non-stop!</div>
+
+<div class="result-box">
+<div>Done: <b id="totalQ">0</b> | Correct: <b id="correctQ">0</b> | <b id="perc">0%</b></div>
+<div class="tag approach" id="cbcTag">Approaching Expectation</div>
+<div style="font-size:9px;margin-top:5px;color:#64748b">CBC: Exceeding 80%+ | Meeting 60-79% | Approaching 40-59% | Below <40%</div>
+</div>
 </div>
 
-<div class="footer">© 2026 MATH MASTER by Mourice | CBC Aligned | Endless Learning | Nairobi, KE</div>
+<div class="footer">© 2026 MATH MASTER by Mourice | CBC Senior | Nairobi</div>
 
 <script>
-// MATH MASTER - Infinite Endless Questions Engine by Mourice
-let score=0, streak=0, qnum=1, currentLevel='easy', a,b,op,correctAns;
+let score=0,streak=0,qnum=1,grade=10,lesson='Algebra',correctAns=0,total=0,correct=0;
 
-function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
+function rand(a,b){return Math.floor(Math.random()*(b-a+1))+a}
 
-function setL(lvl, el){
-currentLevel=lvl;
-document.querySelectorAll('.level').forEach(e=>e.classList.remove('active'));
+function setGrade(g,el){
+grade=g;
+document.querySelectorAll('.grade').forEach(e=>e.classList.remove('active'));
 el.classList.add('active');
-qnum=1;
+newQuestion();
+}
+function setLesson(l,el){
+lesson=l;
+document.querySelectorAll('.lesson').forEach(e=>e.classList.remove('active'));
+el.classList.add('active');
 newQuestion();
 }
 
 function newQuestion(){
-// INFINITE QUESTION GENERATOR - Never repeats same, endless
-if(currentLevel==='easy'){
-a=rand(1,20); b=rand(1,20); op='+'; correctAns=a+b;
-}else if(currentLevel==='medium'){
-a=rand(10,90); b=rand(1,50);
-let ops=['+','-']; op=ops[rand(0,1)];
-correctAns= op==='+' ? a+b : a-b;
-if(correctAns<0){a=rand(20,90); b=rand(1,20); correctAns=a-b; op='-';}
-}else if(currentLevel==='hard'){
-a=rand(2,12); b=rand(2,12); op='×'; correctAns=a*b;
-}else{
-let type=rand(1,3);
-if(type===1){a=rand(20,99); b=rand(10,99); op='+'; correctAns=a+b}
-else if(type===2){a=rand(30,99); b=rand(10,50); op='-'; correctAns=a-b}
-else{a=rand(3,15); b=rand(2,15); op='×'; correctAns=a*b}
+let a,b,txt='';
+if(lesson==='Algebra'){
+a=rand(2,12); b=rand(1,20); correctAns=rand(2,15);
+let c = a*correctAns + b;
+txt = `${a}x + ${b} = ${c}, x = ?`;
 }
-document.getElementById('question').textContent=`${a} ${op} ${b} = ?`;
-document.getElementById('qno').textContent=`${qnum} / ∞`;
-document.getElementById('answer').value='';
+else if(lesson==='Quadratic'){
+let r=rand(1,9); correctAns=r;
+txt = `If (x-${r})(x-${r})=0, x = ?`;
+}
+else if(lesson==='Functions'){
+let m=rand(2,5), c=rand(1,10), x=rand(1,10);
+correctAns = m*x + c;
+txt = `f(x)=${m}x+${c}, f(${x}) = ?`;
+}
+else if(lesson==='Trig'){
+let v=rand(1,4);
+if(v===1){correctAns=1; txt=`sin(90°) = ?`;}
+else if(v===2){correctAns=0; txt=`cos(90°) = ?`;}
+else if(v===3){correctAns=1; txt=`If sin(30°)=0.5, 2×sin(30°)= ?`;}
+else{correctAns=0; txt=`sin(0°) = ?`;}
+}
+else if(lesson==='Stats'){
+let x=rand(10,30), y=rand(10,30), z=rand(10,30);
+correctAns = Math.round((x+y+z)/3);
+txt = `Mean of ${x}, ${y}, ${z} = ?`;
+}
+else if(lesson==='Calculus'){
+let n=rand(2,5); correctAns = n*2;
+txt = `If y=x^${n}, dy/dx at x=2 is ${n}×2^${n-1} = ?`;
+let calc = n*Math.pow(2,n-1); correctAns=calc;
+}
+
+document.getElementById('question').textContent = txt;
+document.getElementById('qno').textContent = qnum + ' / ∞';
+document.getElementById('answer').value = '';
 document.getElementById('answer').focus();
 }
 
 function checkAnswer(){
-let val=parseInt(document.getElementById('answer').value);
-let fb=document.getElementById('fb');
-if(isNaN(val)){fb.innerHTML='<span style="color:#e11d48">⚠️ Type your answer!</span>';return}
-if(val===correctAns){
-score+=10; streak++; qnum++;
-fb.innerHTML='<span style="color:#16a34a">✅ CORRECT! +
+let input = document.getElementById('answer').value.trim();
+let fb = document.getElementById('fb');
+if(input===''){fb.innerHTML='<span style="color:#e11d48">Type answer first!</span>'; return;}
+
+let v = Number(input);
+total++;
+if(v===correctAns){
+score+=10; streak++; correct++; qnum++;
+fb.innerHTML='<span style="color:#16a34a">✅ CORRECT! +10</span>';
+} else {
+streak=0;
+fb.innerHTML=`<span style="color:#dc2626">❌ Wrong! Answer is ${correctAns}</span>`;
+qnum++;
+}
+document.getElementById('score').textContent=score;
+document.getElementById('streak').textContent=streak+' 🔥';
+document.getElementById('totalQ').textContent=total;
+document.getElementById('correctQ').textContent=correct;
+let perc = total>0 ? Math.round((correct/total)*100) : 0;
+document.getElementById('perc').textContent=perc+'%';
+let tag=document.getElementById('cbcTag');
+if(perc>=80){tag.textContent='Exceeding Expectation'; tag.className='tag exceed';}
+else if(perc>=60){tag.textContent='Meeting Expectation'; tag.className='tag meet';}
+else if(perc>=40){tag.textContent='Approaching Expectation'; tag.className='tag approach';}
+else{tag.textContent='Below Expectation'; tag.className='tag below';}
+
+setTimeout(()=>{newQuestion(); if(v===correctAns) fb.textContent='';}, 1200);
+}
+
+document.getElementById('answer').addEventListener('keydown',function(e){if(e.key==='Enter') checkAnswer();});
+
+newQuestion();
+</script>
+</body>
+</html>
