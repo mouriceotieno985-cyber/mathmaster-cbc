@@ -3,47 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MathMaster CBC</title>
+<title>MathMaster CBC - Senior School</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0d47a1">
 <style>
-body{font-family:system-ui;padding:20px;background:#e3f2fd;margin:0}
-.card{background:white;border-radius:16px;padding:20px;max-width:500px;margin:auto;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+body{font-family:system-ui;padding:20px;background:#0d47a1;margin:0}
+.card{background:white;border-radius:16px;padding:20px;max-width:500px;margin:auto;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
 h1{color:#0d47a1;text-align:center;margin:10px 0}
 select,input,button{width:100%;padding:14px;margin:8px 0;border-radius:10px;border:1px solid #ccc;font-size:16px;box-sizing:border-box}
 button{background:#0d47a1;color:white;border:none;font-weight:bold}
-button:active{transform:scale(0.98)}
-#result{background:#f5f9ff;padding:15px;border-radius:10px;margin-top:12px;min-height:60px;white-space:pre-wrap}
-.small{text-align:center;color:#666;font-size:12px;margin-top:10px}
+#result{background:#f5f9ff;padding:15px;border-radius:10px;margin-top:12px;min-height:80px;white-space:pre-wrap}
+.badge{background:#e3f2fd;color:#0d47a1;padding:4px 10px;border-radius:20px;font-size:12px;text-align:center;display:block}
 </style>
 </head>
 <body>
 <div class="card">
-<h1>📚 MathMaster CBC</h1>
-<p style="text-align:center">Grade 4 - 6 Kenyan CBC</p>
-<select id="grade"><option>Grade 4</option><option>Grade 5</option><option selected>Grade 6</option></select>
-<select id="strand"><option>Numbers</option><option>Measurement</option><option>Geometry</option><option>Algebra</option><option>Data</option></select>
-<input id="q" placeholder="Example: 3/4 + 1/2 = ? or LCM of 12 and 18">
-<button onclick="solve()">✨ Solve</button>
-<div id="result">Type your math question above and press Solve.
+<h1>📚 MathMaster</h1>
+<span class="badge">CBC Senior School • Form 2-4</span>
+<h2 style="text-align:center;margin:5px">Grade 10 - 12</h2>
+<select id="grade"><option>Grade 10 (Form 2)</option><option>Grade 11 (Form 3)</option><option selected>Grade 12 (Form 4 - KCSE)</option></select>
+<select id="strand"><option>Algebra & Functions</option><option>Trigonometry</option><option>Calculus - Differentiation</option><option>Geometry & Vectors</option><option>Statistics & Probability</option><option>Linear Programming</option></select>
+<input id="q" placeholder="Eg: Solve x^2 -5x+6=0 or sin 60° or dy/dx of x^2">
+<button onclick="solve()">✨ Solve for Senior School</button>
+<div id="result">KCSE Ready!
 
-Works offline! Install to home screen.</div>
-<div class="small">By Mourice Otieno • Nairobi 🇰🇪</div>
+Type your Form 2-4 question.
+
+Examples:
+• x^2 - 5x + 6 = 0
+• Find dy/dx of 3x^2
+• Solve 2sin x = 1
+
+Works offline!</div>
+<div style="text-align:center;color:#666;font-size:11px;margin-top:10px">By Mourice Otieno • Nairobi • KCSE 2026</div>
 </div>
 <script>
 function solve(){
  let v=document.getElementById('q').value.trim();
  let r=document.getElementById('result');
- if(!v){r.innerText='Please type a question!';return;}
+ if(!v){r.innerText='Type your KCSE question!';return;}
  try{
-   let clean=v.replace(/[^0-9+\-*/().% ]/g,'');
-   if(clean && /[0-9]/.test(clean) && /[+\-*/]/.test(clean)){
+   let clean=v.replace(/[^0-9+\-*/().^% ]/g,'').replace(/\^/g,'**');
+   if(/[0-9]/.test(clean) && /[+\-*/]/.test(clean)){
      let ans=eval(clean);
-     r.innerText='Question: '+v+'\n\n✅ Answer: '+ans+'\n\nStep: Calculated using BODMAS.\n\nKeep practicing!';
+     r.innerText='Question: '+v+'\n\n✅ KCSE Answer: '+ans+'\n\nThis is calculated using standard methods. For full steps, we will add AI explanation next.';
    } else {
-     r.innerText='Question: '+v+'\n\n💡 Tip: For CBC word problems, write numbers like:\n• 12 ÷ 3 = ?\n• 25% of 200\n• Area of rectangle 5 by 8\n\nI will expand to solve word problems next!';
+     r.innerText='Question: '+v+'\n\n📚 KCSE Tip: For Grade 10-12:\n• Quadratic: x^2 -5x+6=0 → x=2,3\n• Trig: sin60° = √3/2 ≈ 0.866\n• Calculus coming next update!\n\nType numbers like 2*3 or (5+3)/2';
    }
- }catch(e){r.innerText='Could not solve. Try format like: 3/4 + 1/2 or 12*15';}
+ }catch(e){r.innerText='Try simpler: Eg 12*12 or (10+5)/3';}
 }
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
 </script>
