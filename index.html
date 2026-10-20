@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MathMaster CBC</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0d47a1">
+<style>
+body{font-family:system-ui;padding:20px;background:#e3f2fd;margin:0}
+.card{background:white;border-radius:16px;padding:20px;max-width:500px;margin:auto;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+h1{color:#0d47a1;text-align:center;margin:10px 0}
+select,input,button{width:100%;padding:14px;margin:8px 0;border-radius:10px;border:1px solid #ccc;font-size:16px;box-sizing:border-box}
+button{background:#0d47a1;color:white;border:none;font-weight:bold}
+button:active{transform:scale(0.98)}
+#result{background:#f5f9ff;padding:15px;border-radius:10px;margin-top:12px;min-height:60px;white-space:pre-wrap}
+.small{text-align:center;color:#666;font-size:12px;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>📚 MathMaster CBC</h1>
+<p style="text-align:center">Grade 4 - 6 Kenyan CBC</p>
+<select id="grade"><option>Grade 4</option><option>Grade 5</option><option selected>Grade 6</option></select>
+<select id="strand"><option>Numbers</option><option>Measurement</option><option>Geometry</option><option>Algebra</option><option>Data</option></select>
+<input id="q" placeholder="Example: 3/4 + 1/2 = ? or LCM of 12 and 18">
+<button onclick="solve()">✨ Solve</button>
+<div id="result">Type your math question above and press Solve.
+
+Works offline! Install to home screen.</div>
+<div class="small">By Mourice Otieno • Nairobi 🇰🇪</div>
+</div>
+<script>
+function solve(){
+ let v=document.getElementById('q').value.trim();
+ let r=document.getElementById('result');
+ if(!v){r.innerText='Please type a question!';return;}
+ try{
+   let clean=v.replace(/[^0-9+\-*/().% ]/g,'');
+   if(clean && /[0-9]/.test(clean) && /[+\-*/]/.test(clean)){
+     let ans=eval(clean);
+     r.innerText='Question: '+v+'\n\n✅ Answer: '+ans+'\n\nStep: Calculated using BODMAS.\n\nKeep practicing!';
+   } else {
+     r.innerText='Question: '+v+'\n\n💡 Tip: For CBC word problems, write numbers like:\n• 12 ÷ 3 = ?\n• 25% of 200\n• Area of rectangle 5 by 8\n\nI will expand to solve word problems next!';
+   }
+ }catch(e){r.innerText='Could not solve. Try format like: 3/4 + 1/2 or 12*15';}
+}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
+</script>
+</body>
+</html>
