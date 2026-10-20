@@ -1,1 +1,16 @@
-{"name":"MathMaster CBC","short_name":"MathMaster","start_url":"index.html","display":"standalone","background_color":"#f5f7ff","theme_color":"#0d47a1","icons":[{"src":"https://cdn-icons-png.flaticon.com/512/2232/2232688.png","sizes":"512x512","type":"image/png"}]}
+{
+  "name": "MATH MASTER by Mourice",
+  "short_name": "Math Master",
+  "description": "CBC Math Mastery - By Mourice",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#6d28d9",
+  "theme_color": "#6d28d9",
+  "icons": [
+    {
+      "src": "IMG-20261020-WA6973.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
