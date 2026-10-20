@@ -3,102 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MathMaster • KPSEA Past Papers</title>
+<title>MathMaster School v6 • Complete</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f172a">
 <style>
-*{box-sizing:border-box;font-family:system-ui}
-body{margin:0;background:#0f172a;color:white}
-.header{background:linear-gradient(135deg,#1e40af,#0f172a);padding:20px 20px 24px;text-align:center;border-radius:0 0 24px 24px}
-.logo{font-size:30px;font-weight:800}.logo span{color:#60a5fa}
-.sub{opacity:.8;font-size:11px;margin-top:4px;letter-spacing:1px;text-transform:uppercase}
-.tabs{display:flex;gap:8px;justify-content:center;margin:14px 0}
-.tab{padding:10px 18px;border-radius:20px;background:rgba(255,255,255,.1);font-size:13px;font-weight:700;cursor:pointer}
-.tab.active{background:white;color:#0f172a}
-.container{padding:12px;max-width:540px;margin:0 auto}
-.card{background:white;color:#0f172a;border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:0 8px 20px rgba(0,0,0,.3)}
-.label{font-size:10px;font-weight:800;color:#64748b;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
-input,select{width:100%;padding:14px;border-radius:10px;border:2px solid #e2e8f0;background:#f8fafc;font-size:14px;font-weight:600}
-.btn{width:100%;padding:14px;background:linear-gradient(135deg,#1e40af,#3b82f6);color:white;border:none;border-radius:10px;font-weight:800;margin-top:8px}
-.result{background:#0f172a;color:white;border-radius:12px;padding:14px;margin-top:10px}
-.ans{font-size:18px;font-weight:800;color:#60a5fa}
-.paper{border:1px solid #e2e8f0;border-radius:10px;padding:10px;margin:8px 0;background:#f8fafc}
-.paper b{font-size:12px;color:#1e40af}.paper p{font-size:13px;margin:6px 0;font-weight:600}
-.paper button{padding:6px 12px;background:#0f172a;color:white;border:none;border-radius:6px;font-size:11px}
-.badge{font-size:9px;background:#dbeafe;color:#1e40af;padding:3px 7px;border-radius:10px}
-.footer{text-align:center;padding:14px;font-size:10px;opacity:.5}
+*{box-sizing:border-box;font-family:system-ui}body{margin:0;background:#f1f5f9}
+.h{background:#0f172a;color:white;padding:16px 14px;text-align:center;position:sticky;top:0;z-index:99}
+.logo{font-size:24px;font-weight:900}.logo span{color:#60a5fa}
+.sub{font-size:9px;opacity:.7;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.tabs{display:flex;gap:5px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.t{padding:7px 12px;border-radius:18px;background:rgba(255,255,255,.15);font-size:10px;font-weight:800;cursor:pointer}
+.t.active{background:white;color:#0f172a}
+.c{padding:10px;max-width:580px;margin:0 auto}
+.card{background:white;border-radius:12px;padding:12px;margin-bottom:10px;box-shadow:0 3px 10px rgba(0,0,0,.05)}
+.lab{font-size:9px;font-weight:900;color:#64748b;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.topic{padding:10px;border:2px solid #f1f5f9;border-radius:9px;margin:5px 0;display:flex;justify-content:space-between;cursor:pointer}
+.topic.active{border-color:#1e40af;background:#eff6ff}
+.lesson{background:#0f172a;color:white;border-radius:10px;padding:12px;margin-top:8px;line-height:1.5;font-size:12px}
+.lesson h4{color:#60a5fa;margin:6px 0;font-size:13px}
+.qbox{background:#f8fafc;border:2px solid #e2e8f0;border-radius:10px;padding:10px;margin:8px 0}
+.opt{padding:9px;background:white;border:1px solid #e2e8f0;border-radius:7px;margin:4px 0;font-size:12px;cursor:pointer}
+.opt.sel{border-color:#1e40af;background:#eff6ff} .opt.ok{background:#dcfce7;border-color:#16a34a} .opt.bad{background:#fee2e2;border-color:#ef4444}
+input,select,textarea{width:100%;padding:11px;border-radius:8px;border:2px solid #e2e8f0;background:#f8fafc;font-size:13px}
+.btn{width:100%;padding:11px;background:#1e40af;color:white;border:none;border-radius:8px;font-weight:800;font-size:12px;cursor:pointer;margin-top:6px}
+.res{background:#0f172a;color:white;border-radius:9px;padding:10px;margin-top:8px;font-size:12px;line-height:1.5}
+.ans{color:#60a5fa;font-weight:800;font-size:15px}
+.exp{background:rgba(255,255,255,.07);padding:8px;border-radius:6px;margin-top:6px;font-size:11px}
+.scoreBox{display:flex;gap:8px;margin:8px 0}.sb{flex:1;background:#f1f5f9;padding:8px;border-radius:8px;text-align:center}.sb b{font-size:16px;display:block}
+.bar{height:5px;background:#e2e8f0;border-radius:10px;overflow:hidden}.fill{height:100%;background:#1e40af;width:0%}
+.footer{text-align:center;padding:10px;font-size:9px;opacity:.5}
 </style>
 </head>
 <body>
-<div class="header">
-<div class="logo">Math<span>Master</span> PRO</div>
-<div class="sub">CBC • KPSEA Past Papers • Senior School</div>
+<div class="h">
+<div class="logo">Math<span>Master</span> SCHOOL v6</div>
+<div class="sub">Lessons • App asks + You ask • Marking • Results • KPSEA</div>
 <div class="tabs">
-<div class="tab active" id="t1" onclick="showTab(1)">⚡ Solver</div>
-<div class="tab" id="t2" onclick="showTab(2)">📚 KPSEA Papers</div>
+<div class="t active" onclick="sh(1)" id="t1">📖 LESSONS</div>
+<div class="t" onclick="sh(2)" id="t2">❓ APP ASKS YOU</div>
+<div class="t" onclick="sh(3)" id="t3">💬 YOU ASK APP</div>
+<div class="t" onclick="sh(4)" id="t4">🏆 RESULTS</div>
 </div>
 </div>
-<div class="container">
-<div id="tab1">
+<div class="c">
+<div id="b1">
+<div class="card"><div class="lab">Topics - Tap to Learn (App Teaches)</div><div id="topics"></div><div id="lesBox"></div></div>
+</div>
+<div id="b2" style="display:none">
 <div class="card">
-<div class="label">KPSEA Solver - Senior School</div>
-<input id="q" placeholder="e.g. x^2 -5x+6=0">
-<button class="btn" onclick="solve()">SOLVE • KPSEA MODE</button>
-<div class="result" id="result"><div style="opacity:.6;font-size:11px">READY • OFFLINE</div><div style="margin-top:6px;font-size:13px">Type any question. Works offline.</div></div>
+<div class="lab">App Gives You Questions • Marks You • Explains Mistakes</div>
+<div class="scoreBox"><div class="sb"><b id="sc">0</b><small>Score</small></div><div class="sb"><b id="tot">0/0</b><small>Done</small></div><div class="sb"><b id="perc">0%</b><small>Pass</small></div></div>
+<div class="bar"><div class="fill" id="fill"></div></div>
+<div id="prac"></div>
+<button class="btn" onclick="nextQ()" id="nxt" style="display:none">Next Question →</button>
 </div>
 </div>
-<div id="tab2" style="display:none">
+<div id="b3" style="display:none">
 <div class="card">
-<div class="label">Filter Past Papers</div>
-<select id="filter" onchange="renderPapers()">
-<option value="all">All - KPSEA 2023-2025</option>
-<option value="Grade 6">Grade 6 KPSEA</option>
-<option value="Grade 10">Grade 10</option>
-<option value="Grade 11">Grade 11</option>
-<option value="Grade 12">Grade 12 Senior</option>
-<option value="Algebra">Algebra</option>
-</select>
-<div id="papers"></div>
+<div class="lab">You Ask - App Solves With Steps (For Homework)</div>
+<textarea id="ask" rows="2" placeholder="Type your question: e.g. Solve x^2 -5x+6=0 or Find area of rectangle 12 by 8"></textarea>
+<button class="btn" onclick="solveAsk()">Ask App → Get Steps + Answer</button>
+<div id="askRes"></div>
 </div>
 </div>
-<div class="footer">Built by Mourice Otieno • Nairobi • 2026<br>KPSEA • CBC • v4.0 Past Papers</div>
+<div id="b4" style="display:none">
+<div class="card"><div class="lab">Your Results & Weak Areas</div><div id="resultsBox">No results yet. Do Practice tab first!</div><button class="btn" onclick="resetRes()">Reset Results</button></div>
+</div>
+<div class="footer">Built by Mourice Otieno • v6.0 Complete • Nairobi</div>
 </div>
 <script>
-const kpseaPapers=[
-{g:'Grade 6',t:'Numbers',q:'A school has 1,245 pupils. 478 are boys. How many girls?',a:'767 girls',y:'2024'},
-{g:'Grade 6',t:'Fractions',q:'What is 3/4 + 2/3 ?',a:'1 5/12 (17/12)',y:'2023'},
-{g:'Grade 6',t:'Geometry',q:'Area of rectangle length 12m width 8m?',a:'96 m²',y:'2024'},
-{g:'Grade 6',t:'Rate',q:'A car travels 180km in 3 hours. Speed?',a:'60 km/h',y:'2023'},
-{g:'Grade 10',t:'Algebra',q:'Solve: 2x + 5 = 15',a:'x = 5',y:'2024'},
-{g:'Grade 10',t:'Algebra',q:'Factorize: x² -5x +6 =0',a:'(x-2)(x-3), x=2,3',y:'2023'},
-{g:'Grade 11',t:'Trigonometry',q:'Find sin 30° + cos 60°',a:'1 (0.5+0.5)',y:'2024'},
-{g:'Grade 11',t:'Statistics',q:'Mean of 4,6,8,10,12?',a:'8',y:'2024'},
-{g:'Grade 12',t:'Calculus',q:'dy/dx of y = 3x² + 2x -5',a:'6x +2',y:'2025 Senior'},
-{g:'Grade 12',t:'Linear',q:'Solve simultaneous: x+y=10, x-y=4',a:'x=7, y=3',y:'2025 Senior'},
+const lessons=[
+{id:'algebra',n:'Algebra',s:'Grade 10-12 • Solving Equations',l:`<div class=lesson><h4>What is x?</h4>x is unknown number.<br><b>Rule 1:</b> x + a = b → x = b-a<br><b>Example:</b> x+7=15 → x=8<br><h4>Quadratic: x²-5x+6=0</h4>Find two numbers that multiply to 6 and add to -5 → -2 and -3<br>So (x-2)(x-3)=0 → x=2 or 3<br><b>KPSEA Marking:</b> 1 mark factorization, 1 mark answer.</div>`},
+{id:'frac',n:'Fractions',s:'Grade 6 KPSEA',l:`<div class=lesson><h4>Adding Fractions</h4>LCM method.<br>1/2 + 1/3 = 3/6 + 2/6 =5/6<br><b>Common mistake:</b> Don't add denominators! 1/2+1/3 ≠ 2/5<br><h4>KPSEA 2024:</h4> 3/4+2/3 = 9/12+8/12=17/12=1 5/12</div>`},
+{id:'geo',n:'Geometry',s:'Area & Perimeter',l:`<div class=lesson><h4>Area Formulas</h4>Rectangle: L×W<br>Triangle: ½×b×h<br>Circle: πr²<br><b>Example:</b> 12m by 8m =96m² (KPSEA 2024 asked this!)<br><b>Mistake:</b> Don't forget units - m² not m!</div>`},
+{id:'trig',n:'Trigonometry',s:'Grade 11-12',l:`<div class=lesson><h4>sin cos tan</h4>sin30=0.5, sin60=0.866<br>Use SOH CAH TOA<br><b>Example:</b> Find height if sin30= opposite/10=0.5 → opposite=5</div>`},
 ];
-function showTab(n){
- document.getElementById('tab1').style.display=n==1?'block':'none';
- document.getElementById('tab2').style.display=n==2?'block':'none';
- document.getElementById('t1').classList.toggle('active',n==1);
- document.getElementById('t2').classList.toggle('active',n==2);
- if(n==2)renderPapers();
+const qBank=[
+{q:'x + 7 = 15, find x',o:['8','7','22','15'],a:0,ex:'x = 15-7 =8. You move +7 to other side it becomes -7. If you chose 22, you added instead of subtracting!',t:'algebra'},
+{q:'Solve x²-5x+6=0',o:['x=2,3','x=1,6','x=-2,-3','x=5,6'],a:0,ex:'(x-2)(x-3)=0 because -2 × -3 =6 and -2 + -3 = -5. Wrong answers come from wrong factor pair.',t:'algebra'},
+{q:'What is 1/2 + 1/3 ?',o:['5/6','2/5','1/5','2/6'],a:0,ex:'LCM of 2 and 3 is 6. 1/2=3/6, 1/3=2/6, sum=5/6. Mistake 2/5 = adding numerators AND denominators - never do that!',t:'frac'},
+{q:'Area of rectangle 12m by 8m?',o:['96 m²','20 m²','96 m','40 m²'],a:0,ex:'Area = L×W =12×8=96. Unit is m². If you got 20, you did L+W (perimeter). If 96m, you forgot square.',t:'geo'},
+{q:'Mean of 4,6,8,10?',o:['7','8','7.5','28'],a:0,ex:'Mean = sum/number = (4+6+8+10)=28/4=7. If 28, you forgot to divide!',t:'algebra'},
+{q:'sin 30° = ?',o:['0.5','0.866','1','0'],a:0,ex:'Standard value: sin30=0.5, cos60=0.5, sin60=√3/2≈0.866. Memorize KPSEA table!',t:'trig'},
+{q:'180km in 3hrs, speed?',o:['60 km/h','90 km/h','180 km/h','60 km'],a:0,ex:'Speed=Distance/Time=180/3=60 km/h. Need km/h, not km. If 90, you divided by 2.',t:'geo'},
+];
+let curT='algebra', qIdx=0, score=0, total=0, answered=false, history=[];
+function renderT(){let h='';lessons.forEach(l=>{h+=`<div class="topic ${l.id==curT?'active':''}" onclick="openL('${l.id}')"><div><b>${l.n}</b><br><small style=opacity:.6>${l.s}</small></div><div>→</div></div>`});document.getElementById('topics').innerHTML=h;}
+function openL(id){curT=id;renderT();let l=lessons.find(x=>x.id==id);document.getElementById('lesBox').innerHTML=l.l+`<button class=btn onclick="startP('${id}')">Practice ${l.n} Now →</button>`;}
+function sh(n){[1,2,3,4].forEach(i=>{document.getElementById('b'+i).style.display=i==n?'block':'none';document.getElementById('t'+i).classList.toggle('active',i==n);});if(n==2&&qIdx==0)nextQ();if(n==4)showRes();}
+function startP(t){qIdx=0;score=0;total=0;history=[];sh(2);nextQ(t);}
+function nextQ(filter){
+ if(qIdx>=qBank.length){document.getElementById('prac').innerHTML=`<div class=qbox><b>🎉 Done! Final Score ${score}/${qBank.length}</b><p>Check RESULTS tab to see weak areas.</p></div>`;document.getElementById('nxt').style.display='none';showRes();return;}
+ let list=filter?qBank.filter(x=>x.t==filter):qBank;if(filter&&list.length==0)list=qBank;
+ let qq=list[qIdx%list.length];
+ document.getElementById('prac').innerHTML=`<div class=qbox><p><b>Q${qIdx+1}: ${qq.q}</b></p>${qq.o.map((op,i)=>`<div class=opt id=o${i} onclick="check(${i},${qq.a},'${qq.ex.replace(/'/g,"\\'")}')">${String.fromCharCode(65+i)}. ${op}</div>`).join('')}<div id=exBox style=margin-top:8px></div></div>`;
+ answered=false;document.getElementById('nxt').style.display='none';
+ updateBar();
 }
-function renderPapers(){
- let f=document.getElementById('filter').value;
- let c=document.getElementById('papers'); c.innerHTML='';
- kpseaPapers.filter(p=>f=='all'||p.g==f||p.t==f).forEach(p=>{
-   c.innerHTML+=`<div class=paper><b><span class=badge>${p.g}</span> ${p.t} • ${p.y}</b><p>${p.q}</p><button onclick="this.nextElementSibling.style.display='block';this.style.display='none'">Show Answer</button><div style=display:none><div class=ans style=font-size:14px;color:#0f172a>✅ ${p.a}</div><small>Competency: ${p.t} - CBC</small></div></div>`;
- });
+function check(i,correct,ex){
+ if(answered)return;answered=true;
+ document.querySelectorAll('.opt').forEach(o=>o.style.pointerEvents='none');
+ document.getElementById('o'+i).classList.add(i==correct?'ok':'bad');
+ if(i!=correct)document.getElementById('o'+correct).classList.add('ok');
+ let isCorrect=i==correct; if(isCorrect)score++; total++;
+ history.push({q:qBank[qIdx%qBank.length].q,correct:isCorrect,topic:qBank[qIdx%qBank.length].t});
+ let msg=isCorrect?`✅ <b>Correct!</b><div class=exp>${ex}</div>`:`❌ <b>Wrong - Here's why:</b><div class=exp>${ex}</div><div class=exp style=background:#fee2e2;color:#7f1d1d><b>Where you went wrong:</b> You chose ${String.fromCharCode(65+i)}. Remember the method above. Try next one!</div>`;
+ document.getElementById('exBox').innerHTML=msg;
+ document.getElementById('nxt').style.display='block';
+ qIdx++; updateBar(); save();
 }
-function solve(){
- let v=document.getElementById('q').value.trim(); let r=document.getElementById('result');
- if(!v){r.innerHTML='Type question!';return;}
- let quad=v.match(/([-\d]*)x\^2\s*([+-])\s*(\d+)x\s*([+-])\s*(\d+)\s*=\s*0/i);
- if(quad){let a=parseInt(quad[1]||'1')||1;if(quad[1]=='-')a=-1;let b=parseInt(quad[2]+quad[3]);let c=parseInt(quad[4]+quad[5]);let D=b*b-4*a*c;if(D>=0){let x1=(-b+Math.sqrt(D))/(2*a);let x2=(-b-Math.sqrt(D))/(2*a);r.innerHTML=`<div class=ans>x=${x1.toFixed(2)}, ${x2.toFixed(2)}</div><div style=font-size:12px;opacity:.8;margin-top:6px>D=${D} • KPSEA Algebra</div>`;return;}}
- try{let clean=v.replace(/[^0-9+\-*/().^% ]/g,'').replace(/\^/g,'**').replace(/%/g,'/100*');if(clean){let ans=eval(clean);r.innerHTML=`<div class=ans>${ans}</div><div style=font-size:11px;opacity:.7;margin-top:4px>Q:${v} • KPSEA Pathway</div>`;return;}}catch(e){}
- r.innerHTML=`<div style=font-size:14px>${v}</div><div style=font-size:11px;opacity:.7>Check Past Papers tab for similar.</div>`;
+function updateBar(){document.getElementById('sc').innerText=score;document.getElementById('tot').innerText=total+'/'+qBank.length;let p=total?Math.round(score/total*100):0;document.getElementById('perc').innerText=p+'%';document.getElementById('fill').style.width=(qIdx/qBank.length*100)+'%';}
+function showRes(){
+ if(history.length==0){document.getElementById('resultsBox').innerHTML='No results yet. Go to APP ASKS YOU tab!';return;}
+ let weak={};history.forEach(h=>{if(!h.correct)weak[h.topic]=(weak[h.topic]||0)+1;});
+ let html=`<div class=scoreBox><div class=sb><b>${score}</b>Correct</div><div class=sb><b>${history.length-score}</b>Wrong</div><div class=sb><b>${Math.round(score/history.length*100)}%</b>Pass</div></div>`;
+ html+=`<div style=margin-top:10px><b>Weak Areas (Need Lessons):</b><br>`;
+ if(Object.keys(weak).length==0)html+=`🎉 No weak areas! You are KPSEA ready!`;
+ else for(let k in weak){html+=`⚠️ <b>${k}</b>: ${weak[k]} mistakes - <a href="#" onclick="openL('${k}');sh(1)">Re-learn</a><br>`;}
+ html+=`</div><div style=margin-top:10px><b>History:</b><br>`+history.map(h=>`${h.correct?'✅':'❌'} ${h.q}`).join('<br>')+`</div>`;
+ document.getElementById('resultsBox').innerHTML=html;
 }
-renderPapers();
+function save(){localStorage.setItem('mm_history',JSON.stringify(history));localStorage.setItem('mm_score',score);localStorage.setItem('mm_total',total);}
+function resetRes(){history=[];score=0;total=0;qIdx=0;localStorage.clear();updateBar();document.getElementById('prac').innerHTML='Reset! Start again.';document.getElementById('resultsBox').innerHTML='Reset done.';}
+function solveAsk(){
+ let v=document.getElementById('ask').value.trim();let r=document.getElementById('askRes');
+ if(!v){r.innerHTML='<div class=res>Please type question!</div>';return;}
+ let quad=v.match(/x\^2\s*([+-])\s*(\d+)x\s*([+-])\s*(\d+)/i);
+ if(quad||v.includes('x^2')){
+   let m=v.match(/([-\d]*)x\^2\s*([+-])\s*(\d+)x\s*([+-])\s*(\d+)/i);
+   if(m){let a=parseInt(m[1]||'1')||1;let b=parseInt(m[2]+m[3]);let c=parseInt(m[4]+m[5]);let D=b*b-4*a*c;if(D>=0){let x1=(-b+Math.sqrt(D))/(2*a);let x2=(-b-Math.sqrt(D))/(2*a);r.innerHTML=`<div class=res><div class=ans>x = ${x1.toFixed(2)}, ${x2.toFixed(2)}</div><div class=exp><b>Step 1:</b> Identify a=${a}, b=${b}, c=${c}<br><b>Step 2:</b> D=b²-4ac=${D}<br><b>Step 3:</b> x=(-b±√D)/2a<br><b>Marking:</b> 2 marks method, 1 answer</div></div>`;return;}}
+ }
+ try{let clean=v.replace(/area.*rectangle.*(\d+).*?(\d+)/i,(m,a,b)=>a+'*'+b);let nums=v.match(/\d+/g);if(v.toLowerCase().includes('area')&&nums&&nums.length>=2){let ans=nums[0]*nums[1];r.innerHTML=`<div class=res><div class=ans>Area = ${ans} m²</div><div class=exp>Formula: Length × Width<br>${nums[0]} × ${nums[1]} = ${ans}<br>Unit: m² (not m)</div></div>`;return;}
+ let c2=v.replace(/[^0-9+\-*/().^% ]/g,'').replace(/\^/g,'**');if(c2&&/\d/.test(c2)){let ans=eval(c2);r.innerHTML=`<div class=res><div class=ans>= ${ans}</div><div class=exp>Calculation: ${c2}<br>Competency: Numbers & Operations</div></div>`;return;}
+ }catch(e){}
+ r.innerHTML=`<div class=res><b>You asked:</b> ${v}<br><div class=exp>Try: "x^2 -5x+6=0" or "area rectangle 12 by 8" or "12*15+8/2"</div></div>`;
+}
+renderT();openL('algebra');
+let h=localStorage.getItem('mm_history');if(h){history=JSON.parse(h);score=parseInt(localStorage.getItem('mm_score')||0);total=parseInt(localStorage.getItem('mm_total')||0);updateBar();}
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
 </script>
 </body>
