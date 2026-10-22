@@ -94,4 +94,17 @@ function render(){
 ['grade','pathway','search'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',()=>{selected=null;render()}));
 $('year').textContent=new Date().getFullYear();render();
 </script>
-</body></html>
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(() => console.log("MathMaster offline support enabled"))
+      .catch(error => console.error("Service worker error:", error));
+  });
+}
+</script>
+
+</body>
+</html>
