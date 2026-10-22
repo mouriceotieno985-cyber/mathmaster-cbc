@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14213d">
+<title>MathMaster CBC | Senior School Mathematics</title>
+<style>
+:root{--navy:#14213d;--blue:#2563eb;--sky:#eaf2ff;--green:#14804a;--red:#b42318;--ink:#172033;--muted:#64748b;--line:#dce3ed;--paper:#f5f7fb;--card:#fff;--gold:#f4b942}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.5}button,input,select{font:inherit}button{cursor:pointer}.topbar{background:var(--navy);color:white;padding:16px max(18px,calc((100% - 1120px)/2));display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:10px}.logo{width:44px;height:44px;border-radius:13px;background:#fff;color:var(--navy);display:grid;place-items:center;font-weight:900;font-size:22px}.brand h1{font-size:1.15rem;margin:0}.brand p{margin:2px 0 0;color:#d3ddf2;font-size:.82rem}.top-pill{border:1px solid #60708d;border-radius:999px;padding:6px 11px;font-size:.8rem}.wrap{max-width:1120px;margin:auto;padding:22px 16px 54px}.hero{background:linear-gradient(120deg,#14213d,#244b86);color:white;border-radius:22px;padding:clamp(22px,5vw,42px);display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:center;box-shadow:0 12px 30px #14213d1c}.hero h2{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.12;margin:0 0 12px}.hero p{color:#e0eaff;margin:0 0 20px;max-width:620px}.hero-art{font-size:clamp(4rem,10vw,7rem);text-align:center;filter:drop-shadow(0 8px 12px #0002)}.btn{border:0;border-radius:11px;padding:11px 16px;font-weight:700;background:var(--blue);color:white}.btn:hover{filter:brightness(.95)}.btn.light{background:white;color:var(--navy)}.btn.ghost{background:#edf2fa;color:var(--navy)}.btn.small{padding:7px 10px;font-size:.88rem}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:28px 0 13px;flex-wrap:wrap}.section-head h2{margin:0;font-size:1.35rem}.section-head p{margin:4px 0 0;color:var(--muted);font-size:.93rem}.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 3px 12px #0f172a05}.grade-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.grade-card{border:2px solid var(--line);border-radius:15px;background:#fff;padding:18px;text-align:left;color:var(--ink);transition:.15s}.grade-card:hover,.grade-card.active{border-color:var(--blue);background:var(--sky)}.grade-card .num{font-size:1.8rem;font-weight:850;color:var(--blue)}.grade-card strong{display:block;font-size:1.02rem}.grade-card span{color:var(--muted);font-size:.84rem}.path-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.path-card{border:2px solid var(--line);border-radius:15px;padding:17px;background:white;text-align:left;color:var(--ink)}.path-card.active{border-color:var(--green);background:#edfff4}.path-card strong{display:block;font-size:1.05rem}.path-card p{margin:5px 0 0;color:var(--muted);font-size:.88rem}.path-icon{font-size:1.5rem;margin-bottom:6px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.toolbar input,.toolbar select{min-width:0;flex:1;border:1px solid var(--line);background:white;border-radius:10px;padding:10px 12px;color:var(--ink)}.topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.topic-card{background:white;border:1px solid var(--line);border-radius:14px;padding:15px;display:flex;flex-direction:column;gap:8px}.topic-card h3{font-size:1rem;margin:0}.topic-card p{font-size:.85rem;color:var(--muted);margin:0;flex:1}.topic-meta{font-size:.78rem;color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat{background:white;border:1px solid var(--line);border-radius:14px;padding:15px}.stat strong{display:block;font-size:1.6rem;color:var(--blue)}.stat span{font-size:.83rem;color:var(--muted)}.hidden{display:none!important}.quiz-box{max-width:800px;margin:20px auto}.quiz-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}.progress{height:8px;background:#e6ebf3;border-radius:99px;overflow:hidden;margin:12px 0 22px}.progress div{height:100%;background:var(--blue);width:0;transition:width .2s}.question{font-size:clamp(1.15rem,3vw,1.5rem);font-weight:750;margin:14px 0 20px;white-space:pre-line}.options{display:grid;gap:10px}.option{display:flex;gap:11px;align-items:flex-start;text-align:left;width:100%;border:1.5px solid var(--line);border-radius:12px;background:white;padding:13px;color:var(--ink)}.option:hover:not(:disabled){border-color:var(--blue);background:#f7faff}.option .letter{width:28px;height:28px;flex:0 0 28px;display:grid;place-items:center;border-radius:8px;background:#edf2fa;font-weight:800}.option.correct{border-color:var(--green);background:#edfff4}.option.wrong{border-color:var(--red);background:#fff1f0}.feedback{margin-top:15px;padding:14px;border-radius:12px;background:#f1f5f9}.feedback.good{background:#edfff4;border:1px solid #b7e4c7}.feedback.bad{background:#fff1f0;border:1px solid #f1b8b4}.quiz-actions{display:flex;justify-content:space-between;gap:10px;margin-top:20px;flex-wrap:wrap}.notice{padding:13px 15px;border-radius:12px;background:#fff8e6;border:1px solid #f1d58c;color:#684b05;font-size:.9rem}.empty{text-align:center;color:var(--muted);padding:25px}.footer{text-align:center;color:var(--muted);font-size:.82rem;margin-top:35px}.badge{display:inline-block;background:#eaf2ff;color:#1d4ed8;border-radius:999px;padding:4px 8px;font-size:.76rem;font-weight:700}.back{margin-bottom:12px}@media(max-width:760px){.hero{grid-template-columns:1fr}.hero-art{display:none}.topic-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.grade-grid,.path-grid,.topic-grid,.stats{grid-template-columns:1fr}.topbar{align-items:flex-start}.top-pill{display:none}.wrap{padding:16px 12px 38px}.panel{padding:15px}.grade-card{display:flex;align-items:center;gap:13px}.grade-card .num{min-width:52px}.hero{border-radius:17px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="logo">π</div><div><h1>MathMaster CBC</h1><p>Senior School Mathematics • Kenya</p></div></div>
+  <div class="top-pill">Learn • Practise • Improve</div>
+</header>
+<main class="wrap">
+  <section class="hero" id="hero">
+    <div><span class="badge">GRADES 10–12</span><h2>Build your mathematics confidence.</h2><p>Choose your grade and pathway, explore topics, and practise with instant feedback and worked explanations.</p><button class="btn light" onclick="document.getElementById('gradeSection').scrollIntoView({behavior:'smooth'})">Start learning ↓</button></div>
+    <div class="hero-art" aria-hidden="true">📐➗</div>
+  </section>
+
+  <section id="gradeSection">
+    <div class="section-head"><div><h2>1. Choose your grade</h2><p>Study at your current senior-school level.</p></div></div>
+    <div class="grade-grid" id="gradeGrid"></div>
+  </section>
+
+  <section id="pathSection" class="hidden">
+    <div class="section-head"><div><h2>2. Choose your pathway</h2><p id="gradePrompt">Choose Core or Essential Mathematics.</p></div></div>
+    <div class="path-grid">
+      <button class="path-card" data-path="core" onclick="selectPath('core')"><div class="path-icon">📘</div><strong>Core Mathematics</strong><p>Explore the Core Mathematics topic bank and practice questions.</p></button>
+      <button class="path-card" data-path="essential" onclick="selectPath('essential')"><div class="path-icon">🧮</div><strong>Essential Mathematics</strong><p>Explore the Essential Mathematics topic bank and practice questions.</p></button>
+    </div>
+  </section>
+
+  <section id="curriculumSection" class="hidden">
+    <div class="section-head"><div><h2 id="curriculumTitle">Topics</h2><p id="curriculumSubtitle">Choose a topic to practise.</p></div><button class="btn ghost small" onclick="resetSelection()">Change grade/pathway</button></div>
+    <div class="stats">
+      <div class="stat"><strong id="statTopics">0</strong><span>Topics listed</span></div>
+      <div class="stat"><strong id="statAnswered">0</strong><span>Questions answered</span></div>
+      <div class="stat"><strong id="statAccuracy">—</strong><span>Accuracy</span></div>
+    </div>
+    <div class="section-head"><div><h2>Topic library</h2><p>Search by topic name or description.</p></div></div>
+    <div class="toolbar"><input id="topicSearch" type="search" placeholder="Search topics…" oninput="renderTopics()"><select id="difficultyFilter" onchange="renderTopics()"><option value="all">All practice levels</option><option value="starter">Starter</option><option value="intermediate">Intermediate</option></select></div>
+    <div class="topic-grid" id="topicGrid"></div>
+    <div class="notice" style="margin-top:16px"><strong>Curriculum note:</strong> These are starter topic categories for app development. Verify each strand, sub-strand and learning outcome against the latest official KICD design before describing the question bank as complete or officially aligned.</div>
+  </section>
+
+  <section id="notesSection" class="hidden">
+    <div class="quiz-box panel">
+      <button class="btn ghost small back" onclick="backToTopics()">← Back to topics</button>
+      <span class="badge" id="notesGradePath"></span>
+      <h2 id="notesTitle">Topic notes</h2>
+      <p id="notesIntro" style="color:var(--muted)"></p>
+      <div id="notesBody"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+        <button class="btn" id="notesPracticeBtn" onclick="practiceFromNotes()">Practise this topic →</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="quizSection" class="hidden">
+    <div class="quiz-box panel">
+      <button class="btn ghost small back" onclick="backToTopics()">← Back to topics</button>
+      <div class="quiz-top"><span id="quizTopic"></span><span id="quizCount"></span></div>
+      <div class="progress"><div id="progressBar"></div></div>
+      <div id="quizContent"></div>
+    </div>
+  </section>
+
+  <section id="resultsSection" class="hidden">
+    <div class="quiz-box panel" style="text-align:center">
+      <div style="font-size:3rem">🏆</div><h2>Practice complete!</h2>
+      <p id="resultSummary"></p>
+      <div class="stats" style="text-align:left;margin:18px 0">
+        <div class="stat"><strong id="resultScore">0/0</strong><span>Correct answers</span></div>
+        <div class="stat"><strong id="resultPercent">0%</strong><span>Score</span></div>
+        <div class="stat"><strong id="resultGrade">Keep going</strong><span>Feedback</span></div>
+      </div>
+      <button class="btn" onclick="retryTopic()">Try this topic again</button>
+      <button class="btn ghost" onclick="backToTopics()">Choose another topic</button>
+    </div>
+  </section>
+
+  <div class="footer">MathMaster CBC • A learning project for senior-school mathematics.<br>Always check curriculum details and worked answers before publishing.</div>
+</main>
+<script>
+/*
+  CURRICULUM DATA
+  Add verified topics and original questions here.
+  Each topic uses: title, description, level ("starter" or "intermediate"), questions[].
+  Each question uses: q, options[], answer (zero-based index), explanation.
+  The starter topics below are illustrative categories, not an official exhaustive KICD transcription.
+*/
+const curriculum = {
+  "10": {
+    core: [
+      topic("Sets","Set notation, subsets, union and intersection","starter",[
+        mcq("If A = {1, 2, 3} and B = {3, 4}, what is A ∩ B?",["{1, 2, 3, 4}","{3}","{1, 2}","{4}"],1,"The intersection contains elements common to both sets. Only 3 is in both A and B."),
+        mcq("If A = {a, b} and B = {b, c}, find A ∪ B.",["{b}","{a, b, b, c}","{a, b, c}","{a, c}"],2,"The union contains every distinct element in either set.")
+      ]),
+      topic("Number and algebra","Number operations, expressions and algebraic manipulation","starter",[
+        mcq("Simplify 3x + 2x − 4.",["5x − 4","5x + 4","x − 4","6x − 4"],0,"Combine like terms: 3x + 2x = 5x."),
+        mcq("Evaluate 2² + 3.",["7","10","12","5"],0,"2² = 4, and 4 + 3 = 7.")
+      ]),
+      topic("Equations and inequalities","Linear equations and interpreting solution sets","starter",[
+        mcq("Solve 3x + 5 = 20.",["3","5","8","15"],1,"Subtract 5: 3x = 15. Divide by 3: x = 5."),
+        mcq("Which value satisfies x − 2 > 4?",["5","6","7","−1"],2,"x − 2 > 4 means x > 6, so 7 is a solution.")
+      ]),
+      topic("Functions and graphs","Relations, functions and representing relationships","intermediate",[
+        mcq("If f(x) = 2x + 1, find f(3).",["5","6","7","8"],2,"Substitute x = 3: f(3) = 2(3) + 1 = 7.")
+      ]),
+      topic("Geometry and measurement","Angles, shapes, perimeter, area and volume","starter",[
+        mcq("The angles in a triangle add up to:",["90°","180°","270°","360°"],1,"The interior angles of a triangle sum to 180°.")
+      ]),
+      topic("Statistics and probability","Data representation, averages and chance","starter",[
+        mcq("Find the mean of 2, 4 and 6.",["3","4","5","6"],1,"Mean = (2 + 4 + 6) ÷ 3 = 4.")
+      ])
+    ],
+    essential: [
+      topic("Sets and number","Everyday set language and number operations","starter",[
+        mcq("Which symbol means 'is an element of'?",["∪","∩","∈","⊂"],2,"The symbol ∈ means 'is an element of'."),
+        mcq("What is 18 ÷ 3?",["3","5","6","9"],2,"18 divided by 3 equals 6.")
+      ]),
+      topic("Ratio, rates and proportion","Ratios, rates, unit prices and proportional reasoning","starter",[
+        mcq("Simplify the ratio 6:9.",["2:3","3:2","6:3","1:3"],0,"Divide both parts by their highest common factor, 3.")
+      ]),
+      topic("Financial mathematics","Budgets, percentages, discounts and simple interest","starter",[
+        mcq("A 10% discount on KSh 500 is:",["KSh 5","KSh 10","KSh 50","KSh 450"],2,"10% of 500 = 0.10 × 500 = KSh 50.")
+      ]),
+      topic("Equations and inequalities","Using simple equations in practical situations","starter",[
+        mcq("Solve x + 7 = 12.",["3","4","5","19"],2,"Subtract 7 from both sides to get x = 5.")
+      ]),
+      topic("Measurement and geometry","Units, length, area, volume and shape","starter",[
+        mcq("The area of a rectangle of length 8 cm and width 3 cm is:",["11 cm²","22 cm²","24 cm²","48 cm²"],2,"Area = length × width = 8 × 3 = 24 cm².")
+      ]),
+      topic("Data and probability","Tables, charts, averages and simple probability","starter",[
+        mcq("A fair coin is tossed once. What is the probability of heads?",["0","1/4","1/2","1"],2,"There are two equally likely outcomes, so P(heads) = 1/2.")
+      ])
+    ]
+  },
+  "11": {
+    core: [
+      topic("Algebra and equations","Algebraic expressions, equations and rearrangement","starter",[
+        mcq("Solve 2x − 7 = 9.",["1","8","9","16"],1,"Add 7 to get 2x = 16, then divide by 2: x = 8.")
+      ]),
+      topic("Functions and graphs","Function notation, relationships and graphs","intermediate",[
+        mcq("If f(x) = x² − 1, find f(3).",["2","6","8","10"],2,"f(3) = 3² − 1 = 8.")
+      ]),
+      topic("Trigonometry","Right-triangle ratios and applications","starter",[
+        mcq("In a right triangle, sin θ is:",["Adjacent/hypotenuse","Opposite/hypotenuse","Opposite/adjacent","Hypotenuse/opposite"],1,"Sine is opposite side divided by hypotenuse.")
+      ]),
+      topic("Vectors","Vector notation and basic vector operations","starter",[
+        mcq("If a = (2, 1) and b = (3, 4), a + b equals:",["(1, 3)","(5, 5)","(6, 4)","(5, 4)"],1,"Add corresponding components: (2 + 3, 1 + 4) = (5, 5).")
+      ]),
+      topic("Statistics and probability","Data summaries and probability","starter",[
+        mcq("What is the median of 2, 5, 7, 9, 12?",["5","7","8","9"],1,"The middle value in the ordered list is 7.")
+      ])
+    ],
+    essential: [
+      topic("Proportion and rates of work","Rates, ratios and practical proportional reasoning","starter",[
+        mcq("If 4 notebooks cost KSh 200, what is the cost of one notebook at the same rate?",["KSh 25","KSh 40","KSh 50","KSh 100"],2,"Unit cost = 200 ÷ 4 = KSh 50.")
+      ]),
+      topic("Commercial arithmetic","Percentages, discounts, profit and budgeting","starter",[
+        mcq("An item costs KSh 800. A 25% discount is:",["KSh 100","KSh 150","KSh 200","KSh 600"],2,"25% of 800 = 0.25 × 800 = KSh 200.")
+      ]),
+      topic("Linear inequalities","Solving and interpreting inequalities","starter",[
+        mcq("Which number satisfies x + 2 < 6?",["1","4","6","8"],0,"x + 2 < 6 gives x < 4; 1 is a solution."), 
+      ]),
+      topic("Measurement and geometry","Measurement, area and volume in real contexts","starter",[
+        mcq("A square has side 6 cm. Its perimeter is:",["12 cm","24 cm","36 cm²","18 cm"],1,"Perimeter = 4 × side = 24 cm.")
+      ]),
+      topic("Statistics and probability","Collecting, representing and interpreting data","starter",[
+        mcq("The mode of 2, 3, 3, 4, 5 is:",["2","3","4","5"],1,"The mode is the most frequent value; 3 occurs twice.")
+      ])
+    ]
+  },
+  "12": {
+    core: [
+      topic("Sets","Set operations and applications","starter",[
+        mcq("If A = {1, 2, 3} and B = {2, 3, 4}, n(A ∩ B) is:",["1","2","3","4"],1,"A ∩ B = {2, 3}, which has two elements.")
+      ]),
+      topic("Binomial expansions","Expanding expressions using the binomial theorem","intermediate",[
+        mcq("Expand (x + 2)².",["x² + 2x + 4","x² + 4x + 4","x² + 4","x² + 2"],1,"(x + 2)² = x² + 2(x)(2) + 2² = x² + 4x + 4.")
+      ]),
+      topic("Compound proportions, work and mixtures","Proportional relationships in practical situations","intermediate",[
+        mcq("If 3 workers complete a job in 8 days at the same rate, how many worker-days is the job?",["11","18","24","32"],2,"Work measured in worker-days is 3 × 8 = 24 worker-days.")
+      ]),
+      topic("Linear programming","Constraints, feasible regions and optimization","intermediate",[
+        mcq("In a linear programming problem, the objective function is used to:",["List variables only","Maximize or minimize a quantity","Draw axes only","Find a percentage"],1,"The objective function represents the quantity to maximize or minimize.")
+      ]),
+      topic("Matrices and transformations","Matrix operations and geometric transformations","intermediate",[
+        mcq("For A = [[1,2],[3,4]], the order of A is:",["1 × 4","2 × 2","4 × 1","3 × 2"],1,"A has two rows and two columns, so its order is 2 × 2.")
+      ]),
+      topic("Approximations","Rounding, bounds and estimation","starter",[
+        mcq("Round 7.846 to 2 decimal places.",["7.8","7.84","7.85","7.9"],2,"The third decimal digit is 6, so the second decimal digit rounds up.")
+      ]),
+      topic("Loci and geometry","Geometric loci and spatial reasoning","intermediate",[
+        mcq("The locus of points a fixed distance from one point in a plane is a:",["Straight line","Circle","Rectangle","Triangle"],1,"All points a fixed distance from a centre form a circle.")
+      ]),
+      topic("Three-dimensional geometry","Lengths, angles and relationships in 3D","intermediate",[
+        mcq("A cube has how many vertices?",["6","8","10","12"],1,"A cube has 8 vertices.")
+      ]),
+      topic("Trigonometry","Trigonometric relationships and applications","intermediate",[
+        mcq("sin 30° equals:",["0","1/2","√3/2","1"],1,"The exact value of sin 30° is 1/2.")
+      ]),
+      topic("Vectors and navigation","Vectors, bearings and direction","intermediate",[
+        mcq("A bearing is measured clockwise from:",["South","East","North","West"],2,"Bearings are measured clockwise from north.")
+      ]),
+      topic("Statistics","Summarizing and interpreting data","starter",[
+        mcq("The mean of 4, 6, 8 and 10 is:",["6","7","8","9"],1,"Mean = (4 + 6 + 8 + 10) ÷ 4 = 7.")
+      ]),
+      topic("Differentiation","Rates of change and derivatives","intermediate",[
+        mcq("If y = x², then dy/dx is:",["x","2x","x³","2"],1,"Using the power rule, d(x²)/dx = 2x.")
+      ]),
+      topic("Integration","Antiderivatives and area concepts","intermediate",[
+        mcq("An indefinite integral of 2x with respect to x is:",["2","x² + C","2x² + C","x + C"],1,"The antiderivative of 2x is x² + C.")
+      ])
+    ],
+    essential: [
+      topic("Sets","Sets and their use in everyday contexts","starter",[
+        mcq("The union of {a, b} and {b, c} is:",["{b}","{a, b, c}","{a, c}","{a, b, b, c}"],1,"The union contains all distinct elements from both sets.")
+      ]),
+      topic("Compound proportions, work and mixtures","Practical ratios, rates and mixtures","starter",[
+        mcq("If 2 kg of rice costs KSh 300, the cost of 1 kg at the same rate is:",["KSh 100","KSh 150","KSh 200","KSh 600"],1,"300 ÷ 2 = KSh 150 per kilogram.")
+      ]),
+      topic("Linear inequalities","Inequalities in practical situations","starter",[
+        mcq("Solve x + 3 ≤ 7.",["x ≤ 4","x ≥ 4","x < 10","x ≥ 10"],0,"Subtract 3 from both sides to obtain x ≤ 4.")
+      ]),
+      topic("Linear programming","Using constraints to make practical decisions","intermediate",[
+        mcq("A feasible solution must satisfy:",["Only the objective function","All the constraints","No constraints","Only one constraint"],1,"A feasible solution satisfies every constraint in the model.")
+      ]),
+      topic("Area approximations","Estimating areas using measurements and shapes","starter",[
+        mcq("A rectangle is 5 m long and 4 m wide. Its area is:",["9 m²","18 m²","20 m²","25 m²"],2,"Area = 5 × 4 = 20 m².")
+      ]),
+      topic("Vectors and navigation","Direction, bearings and vector ideas","starter",[
+        mcq("A bearing of 090° points due:",["North","East","South","West"],1,"090° clockwise from north is east.")
+      ]),
+      topic("Commercial arithmetic","Money, budgets, percentages and interest","starter",[
+        mcq("Simple interest on KSh 1,000 at 10% per year for 1 year is:",["KSh 10","KSh 50","KSh 100","KSh 1,100"],2,"Interest = principal × rate × time = 1000 × 0.10 × 1 = KSh 100.")
+      ]),
+      topic("Statistics","Tables, averages and interpreting data","starter",[
+        mcq("Find the range of 3, 7, 9, 12.",["5","7","9","12"],1,"Range = highest − lowest = 12 − 3 = 9.","Range is 9")
+      ]),
+      topic("Probability","Chance and simple probability calculations","starter",[
+        mcq("A bag contains 3 red and 2 blue balls. What is P(blue) when one ball is chosen at random?",["2/5","3/5","1/2","2/3"],0,"There are 2 blue balls out of 5 balls in total, so P(blue) = 2/5.")
+      ])
+    ]
+  }
+};
+function mcq(q,options,answer,explanation){return {q,options,answer,explanation};}
+function topic(title,description,level,questions){return {title,description,level,questions};}
+
+// Fix or add verified curriculum topics and question sets in the curriculum object above.
+let selectedGrade = null, selectedPath = null, currentTopic = null, questionIndex = 0, currentScore = 0, answered = false, sessionAnswers = [];
+let totalAnswered = Number(localStorage.getItem("mmcbc_answered") || 0);
+let totalCorrect = Number(localStorage.getItem("mmcbc_correct") || 0);
+let topicAttempts = JSON.parse(localStorage.getItem("mmcbc_topicAttempts") || "{}");
+const $ = id => document.getElementById(id);
+
+function init(){
+  $("gradeGrid").innerHTML = ["10","11","12"].map(g=>`<button class="grade-card" onclick="selectGrade('${g}')"><div class="num">${g}</div><div><strong>Grade ${g}</strong><span>Senior School Mathematics</span></div></button>`).join("");
+  updateStats();
+}
+function selectGrade(g){
+  $("notesSection").classList.add("hidden");
+  selectedGrade=g;selectedPath=null;
+  document.querySelectorAll(".grade-card").forEach((el,i)=>el.classList.toggle("active",["10","11","12"][i]===g));
+  $("gradePrompt").textContent=`Grade ${g} selected. Now choose your pathway.`;
+  $("pathSection").classList.remove("hidden");
+  $("curriculumSection").classList.add("hidden");
+  $("quizSection").classList.add("hidden");$("resultsSection").classList.add("hidden");
+  document.querySelectorAll(".path-card").forEach(el=>el.classList.remove("active"));
+  $("pathSection").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function selectPath(path){
+  $("notesSection").classList.add("hidden");
+  selectedPath=path;
+  document.querySelectorAll(".path-card").forEach(el=>el.classList.toggle("active",el.dataset.path===path));
+  $("curriculumTitle").textContent=`Grade ${selectedGrade} · ${path==="core"?"Core":"Essential"} Mathematics`;
+  $("curriculumSubtitle").textContent="Choose a topic to practise. Questions are starter examples and can be expanded.";
+  $("curriculumSection").classList.remove("hidden");
+  $("quizSection").classList.add("hidden");$("resultsSection").classList.add("hidden");
+  $("topicSearch").value="";$("difficultyFilter").value="all";
+  renderTopics();updateStats();$("curriculumSection").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function resetSelection(){
+  $("notesSection").classList.add("hidden");
+  selectedGrade=null;selectedPath=null;
+  $("pathSection").classList.add("hidden");$("curriculumSection").classList.add("hidden");$("quizSection").classList.add("hidden");$("resultsSection").classList.add("hidden");
+  document.querySelectorAll(".grade-card,.path-card").forEach(el=>el.classList.remove("active"));
+  $("gradeSection").scrollIntoView({behavior:"smooth"});
+}
+function renderTopics(){
+  if(!selectedGrade||!selectedPath)return;
+  const list=curriculum[selectedGrade][selectedPath]||[];
+  const search=$("topicSearch").value.toLowerCase().trim(),filter=$("difficultyFilter").value;
+  const filtered=list.filter(t=>(t.title+" "+t.description).toLowerCase().includes(search)&&(filter==="all"||t.level===filter));
+  $("statTopics").textContent=list.length;
+  $("topicGrid").innerHTML=filtered.length?filtered.map((t,i)=>`<article class="topic-card"><div><span class="badge">${t.level==="starter"?"Starter":"Intermediate"}</span></div><h3>${escapeHtml(t.title)}</h3><p>${escapeHtml(t.description)}</p><div class="topic-meta">${t.questions.length} practice question${t.questions.length===1?"":"s"} · ${topicAttempts[keyFor(t)]||0} attempts</div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost small" onclick="showNotes(${list.indexOf(t)})">Read notes</button><button class="btn small" onclick="startTopic(${list.indexOf(t)})">Practise →</button></div></article>`).join(""):`<div class="empty" style="grid-column:1/-1">No topics match that search.</div>`;
+}
+
+const notesLibrary = {
+"Sets": {intro:"A set is a well-defined collection of distinct objects.",sections:[
+["Key ideas","• A set is usually named with a capital letter, for example A.\n• Roster notation lists its elements inside braces, e.g. A = {1, 2, 3}.\n• ∈ means “is an element of”; ∉ means “is not an element of”.\n• A ⊂ B means A is a subset of B."],
+["Operations","• Union A ∪ B contains elements in A or B or both.\n• Intersection A ∩ B contains only elements common to both sets.\n• Difference A − B contains elements in A that are not in B.\n• The universal set contains all objects under discussion; the empty set is ∅."],
+["Worked example","If A = {1, 2, 3} and B = {3, 4}, then A ∪ B = {1, 2, 3, 4} and A ∩ B = {3}."]
+]},
+"Number and algebra": {intro:"Algebra uses symbols to represent numbers and relationships.",sections:[
+["Key ideas","• Like terms have the same variable part, e.g. 3x and 2x.\n• Use the order of operations: brackets, powers, multiplication/division, addition/subtraction.\n• The distributive law is a(b + c) = ab + ac."],
+["Worked example","Simplify 3x + 2x − 4. Combine the like terms 3x and 2x to get 5x − 4."]
+]},
+"Equations and inequalities": {intro:"Equations state equality; inequalities compare quantities.",sections:[
+["Equations","• Keep an equation balanced by doing the same operation to both sides.\n• To solve 3x + 5 = 20, subtract 5 to get 3x = 15, then divide by 3: x = 5."],
+["Inequalities","• Symbols: < less than, > greater than, ≤ less than or equal to, ≥ greater than or equal to.\n• Adding or subtracting the same value preserves the inequality direction.\n• Multiplying or dividing by a negative number reverses the inequality sign."],
+["Check your answer","Substitute the solution into the original equation or test a value in the original inequality."]
+]},
+"Functions and graphs": {intro:"A function assigns each allowed input exactly one output.",sections:[
+["Key ideas","• Function notation f(x) means the output of function f for input x.\n• To evaluate f(3), replace every x in the rule with 3.\n• A graph shows how two variables are related."],
+["Worked example","If f(x) = 2x + 1, then f(3) = 2(3) + 1 = 7."]
+]},
+"Geometry and measurement": {intro:"Geometry studies shapes, positions, angles and measurements.",sections:[
+["Key facts","• Angles on a straight line add to 180°; angles around a point add to 360°.\n• Interior angles of a triangle add to 180°.\n• Rectangle area = length × width; perimeter = 2(length + width).\n• Always write the correct units: length in units, area in square units, volume in cubic units."],
+["Worked example","A rectangle 8 cm by 3 cm has area 8 × 3 = 24 cm² and perimeter 2(8 + 3) = 22 cm."]
+]},
+"Statistics and probability": {intro:"Statistics describes data; probability measures how likely an event is.",sections:[
+["Statistics","• Mean = sum of values ÷ number of values.\n• Median is the middle value after ordering the data.\n• Mode is the most frequent value.\n• Range = largest value − smallest value."],
+["Probability","• For equally likely outcomes, P(event) = favourable outcomes ÷ total outcomes.\n• Probability lies between 0 and 1, inclusive."],
+["Worked example","For 2, 4, 6, the mean is (2 + 4 + 6) ÷ 3 = 4."]
+]},
+"Ratio, rates and proportion": {intro:"Ratios compare quantities; rates compare quantities measured in different units.",sections:[
+["Key ideas","• Simplify a ratio by dividing each part by the same common factor.\n• A unit rate is the amount for one unit.\n• For direct proportion, if one quantity doubles, the other doubles when the relationship is proportional."],
+["Worked example","If 4 notebooks cost KSh 200, one notebook costs 200 ÷ 4 = KSh 50."]
+]},
+"Financial mathematics": {intro:"Financial mathematics helps compare prices, discounts, budgets and interest.",sections:[
+["Key formulas","• Percentage amount = percentage ÷ 100 × original amount.\n• Discount = marked price × discount rate.\n• Simple interest I = P × r × t, where P is principal, r is annual rate as a decimal and t is time in years.\n• Sale price = marked price − discount."],
+["Worked example","A 10% discount on KSh 500 is 0.10 × 500 = KSh 50. Sale price = KSh 450."]
+]},
+"Algebra and equations": {intro:"Algebra expresses patterns and relationships using variables.",sections:[
+["Key ideas","• Collect like terms and use inverse operations to solve equations.\n• Expand brackets using the distributive law.\n• Check a solution by substitution."],
+["Worked example","2x − 7 = 9 ⇒ 2x = 16 ⇒ x = 8."]
+]},
+"Trigonometry": {intro:"Trigonometry relates angles to side lengths in triangles.",sections:[
+["Right-triangle ratios","For an acute angle θ in a right-angled triangle:\n• sin θ = opposite ÷ hypotenuse\n• cos θ = adjacent ÷ hypotenuse\n• tan θ = opposite ÷ adjacent\nRemember SOH–CAH–TOA."],
+["Good practice","Identify the angle first, label opposite/adjacent/hypotenuse relative to that angle, then choose the ratio that uses the known and unknown sides."]
+]},
+"Vectors": {intro:"A vector has both magnitude and direction.",sections:[
+["Key ideas","• A vector can be written as a column vector or as components (x, y).\n• Add or subtract vectors by operating on matching components.\n• Multiplying a vector by a scalar changes its magnitude and may reverse its direction if the scalar is negative."],
+["Worked example","(2, 1) + (3, 4) = (2 + 3, 1 + 4) = (5, 5)."]
+]},
+"Proportion and rates of work": {intro:"Proportion and work-rate problems connect quantities through a consistent rate.",sections:[
+["Method","• Find the value for one unit first when the rate is constant.\n• For identical work rates, total work can often be measured in worker-hours or worker-days.\n• Check that the units match the question."],
+["Worked example","If 4 notebooks cost KSh 200, unit cost = KSh 200 ÷ 4 = KSh 50."]
+]},
+"Commercial arithmetic": {intro:"Commercial arithmetic applies mathematics to buying, selling, saving and borrowing.",sections:[
+["Key formulas","• Percentage = part ÷ whole × 100%.\n• Profit = selling price − cost price.\n• Loss = cost price − selling price.\n• Discount = marked price × discount rate.\n• Simple interest I = Prt, with rate and time expressed consistently."],
+["Worked example","A 25% discount on KSh 800 is 0.25 × 800 = KSh 200."]
+]},
+"Linear inequalities": {intro:"An inequality describes a range of values rather than necessarily one value.",sections:[
+["Rules","• Solve much like an equation by doing the same operation on both sides.\n• Reverse the inequality sign when multiplying or dividing by a negative number.\n• The solution can be written as an inequality or shown on a number line."],
+["Worked example","x + 3 ≤ 7 ⇒ subtract 3 from both sides ⇒ x ≤ 4."]
+]},
+"Measurement and geometry": {intro:"Measurement uses units to describe lengths, areas, volumes and other quantities.",sections:[
+["Key formulas","• Rectangle area = length × width.\n• Square perimeter = 4 × side.\n• Always convert measurements to consistent units before calculating.\n• Area is in square units; volume is in cubic units."],
+["Worked example","A square with side 6 cm has perimeter 4 × 6 = 24 cm."]
+]},
+"Compound proportions, work and mixtures": {intro:"These problems combine ratios, rates, quantities and sometimes mixtures.",sections:[
+["Problem-solving steps","• Identify the quantities and their units.\n• Decide whether the relationship is direct or inverse proportion.\n• For work at a constant rate, workers × time can represent the same total job (when workers have equal rates and work together without losses).\n• For mixtures, track the amount of each ingredient as well as the total."],
+["Worked example","Three workers working for 8 days represent 3 × 8 = 24 worker-days, assuming equal constant rates."]
+]},
+"Linear programming": {intro:"Linear programming finds the best value of a target quantity subject to constraints.",sections:[
+["Key ideas","• Define the decision variables.\n• Write inequalities for all constraints.\n• Draw the boundary lines and identify the feasible region that satisfies every constraint.\n• Evaluate the objective function at the feasible region's corner points to find the maximum or minimum."],
+["Important reminder","A feasible point must satisfy all constraints, not just one. Follow the exact boundary rules (solid/dashed lines) required by the inequalities."]
+]},
+"Matrices and transformations": {intro:"Matrices organize numbers in rows and columns and can represent transformations.",sections:[
+["Matrices","• The order of a matrix is rows × columns.\n• Matrix addition/subtraction requires matrices of the same order.\n• Matrix multiplication is possible when the number of columns in the first matrix equals the number of rows in the second."],
+["Transformations","Transformations can include reflection, rotation, translation and enlargement. Use the specified coordinate convention and transformation matrix from your course notes."]
+]},
+"Approximations": {intro:"Approximation gives a useful nearby value while controlling accuracy.",sections:[
+["Key ideas","• When rounding to a given decimal place, inspect the next digit.\n• If the next digit is 5–9, round up; if it is 0–4, keep the digit unchanged.\n• Significant figures start at the first non-zero digit.\n• Upper and lower bounds describe the interval of possible original values when a rounded value is given."],
+["Worked example","7.846 rounded to 2 decimal places is 7.85 because the third decimal digit is 6."]
+]},
+"Loci and geometry": {intro:"A locus is the path or set of points satisfying a stated condition.",sections:[
+["Common loci","• Points at a fixed distance from one point form a circle.\n• Points equidistant from two fixed points lie on the perpendicular bisector of the segment joining them.\n• Points at a fixed distance from a straight line lie on parallel lines on either side (within a plane)."],
+["Construction tip","Mark the given points/lines carefully and use a compass or ruler where the task calls for a geometric construction."]
+]},
+"Three-dimensional geometry": {intro:"Three-dimensional geometry studies solid shapes and spatial relationships.",sections:[
+["Key ideas","• 3D shapes have length, width and height.\n• A cube has 6 faces, 12 edges and 8 vertices.\n• Use a clearly labelled sketch to identify right triangles and known lengths when calculating 3D distances or angles."],
+["Method","When a diagonal or angle is required, look for a suitable right triangle and apply the appropriate geometry or trigonometric relationship."]
+]},
+"Vectors and navigation": {intro:"Navigation uses directions, bearings and distances; vectors can represent displacement.",sections:[
+["Bearings","• Bearings are measured clockwise from north and written using three digits, e.g. 045° or 270°.\n• Due east is 090°, south is 180°, west is 270°.\n• Draw a north line at the starting point before measuring a bearing."],
+["Vectors","Represent a journey as a directed displacement. Keep direction and magnitude clear, and distinguish distance travelled from net displacement."]
+]},
+"Differentiation": {intro:"Differentiation measures instantaneous rate of change and gradient.",sections:[
+["Power rule","For y = xⁿ, dy/dx = n xⁿ⁻¹. A constant differentiates to zero, and differentiation is applied term by term to sums."],
+["Worked example","If y = x², then dy/dx = 2x. At x = 3, the gradient is 2(3) = 6."],
+["Interpretation","A derivative can represent a gradient, instantaneous velocity or another rate of change depending on the context."]
+]},
+"Integration": {intro:"Integration reverses differentiation in many basic cases and can be used to calculate accumulated quantities.",sections:[
+["Power rule","For n ≠ −1, ∫xⁿ dx = xⁿ⁺¹/(n + 1) + C. Integrate each term separately and include the constant C for an indefinite integral."],
+["Worked example","∫2x dx = x² + C, because differentiating x² + C gives 2x."],
+["Definite integrals","For a definite integral, find an antiderivative F(x), then calculate F(upper limit) − F(lower limit)."]
+]},
+"Area approximations": {intro:"Area approximation estimates the area of a shape when an exact formula is not practical or measurements are limited.",sections:[
+["Methods","• Split an irregular shape into familiar shapes when possible.\n• Use grids, trapezia or other taught approximation methods as appropriate.\n• Label lengths and use square units for area.\n• More subdivisions often improve an estimate, depending on the method."]
+]},
+"Probability": {intro:"Probability describes the likelihood of an event.",sections:[
+["Key rules","• For equally likely outcomes, P(A) = number of favourable outcomes ÷ total possible outcomes.\n• 0 ≤ P(A) ≤ 1.\n• P(not A) = 1 − P(A)."],
+["Worked example","A bag has 3 red and 2 blue balls. P(blue) = 2/(3 + 2) = 2/5 if each ball is equally likely to be selected."]
+]}
+};
+function notesFor(t){
+  return notesLibrary[t.title] || {intro:t.description,sections:[
+    ["Key ideas",`• ${t.description}.\n• Write down the given information and identify what the question asks you to find.\n• Choose the relevant definition, formula or rule taught for this topic.\n• Show each step clearly and include units where needed.`],
+    ["Study tip","Review your class notes and prescribed curriculum design for the exact definitions, formulas and methods required for this topic."]
+  ]};
+}
+let notesTopicIndex = -1;
+function showNotes(index){
+  notesTopicIndex=index;
+  currentTopic=curriculum[selectedGrade][selectedPath][index];
+  const n=notesFor(currentTopic);
+  $("notesGradePath").textContent=`Grade ${selectedGrade} · ${selectedPath==="core"?"Core":"Essential"} Mathematics`;
+  $("notesTitle").textContent=currentTopic.title;
+  $("notesIntro").textContent=n.intro;
+  $("notesBody").innerHTML=n.sections.map(sec=>`<section style="padding:13px 0;border-bottom:1px solid var(--line)"><h3 style="margin:0 0 7px;font-size:1.05rem">${escapeHtml(sec[0])}</h3><p style="white-space:pre-line;margin:0">${escapeHtml(sec[1])}</p></section>`).join("");
+  $("curriculumSection").classList.add("hidden");$("quizSection").classList.add("hidden");$("resultsSection").classList.add("hidden");$("notesSection").classList.remove("hidden");
+  $("notesSection").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function practiceFromNotes(){ $("notesSection").classList.add("hidden"); startTopic(notesTopicIndex); }
+
+function keyFor(t){return `${selectedGrade}-${selectedPath}-${t.title}`;}
+function startTopic(index){
+  currentTopic=curriculum[selectedGrade][selectedPath][index];questionIndex=0;currentScore=0;answered=false;sessionAnswers=[];
+  $("curriculumSection").classList.add("hidden");$("resultsSection").classList.add("hidden");$("quizSection").classList.remove("hidden");
+  $("quizTopic").textContent=currentTopic.title;$("quizSection").scrollIntoView({behavior:"smooth",block:"start"});renderQuestion();
+}
+function renderQuestion(){
+  const qs=currentTopic.questions;
+  if(questionIndex>=qs.length){showResults();return;}
+  const q=qs[questionIndex];answered=false;
+  $("quizCount").textContent=`Question ${questionIndex+1} of ${qs.length}`;
+  $("progressBar").style.width=`${questionIndex/qs.length*100}%`;
+  $("quizContent").innerHTML=`<div class="question">${escapeHtml(q.q)}</div><div class="options">${q.options.map((o,i)=>`<button class="option" onclick="chooseAnswer(${i})" id="option${i}"><span class="letter">${String.fromCharCode(65+i)}</span><span>${escapeHtml(o)}</span></button>`).join("")}</div><div id="feedback" class="hidden"></div><div class="quiz-actions"><span class="topic-meta">Take your time and choose one answer.</span><button class="btn hidden" id="nextBtn" onclick="nextQuestion()">${questionIndex===qs.length-1?"See results":"Next question →"}</button></div>`;
+}
+function chooseAnswer(index){
+  if(answered)return;answered=true;
+  const q=currentTopic.questions[questionIndex],correct=index===q.answer;
+  if(correct)currentScore++;
+  totalAnswered++;if(correct)totalCorrect++;
+  sessionAnswers.push({question:q.q,selected:index,correct:q.answer,isCorrect:correct});
+  localStorage.setItem("mmcbc_answered",totalAnswered);localStorage.setItem("mmcbc_correct",totalCorrect);
+  q.options.forEach((_,i)=>{const b=$("option"+i);b.disabled=true;if(i===q.answer)b.classList.add("correct");if(i===index&&!correct)b.classList.add("wrong");});
+  const f=$("feedback");f.className="feedback "+(correct?"good":"bad");f.innerHTML=`<strong>${correct?"Correct! ✓":"Not quite."}</strong><p style="margin:6px 0 0">${escapeHtml(q.explanation)}</p>`;
+  $("nextBtn").classList.remove("hidden");$("progressBar").style.width=`${(questionIndex+1)/currentTopic.questions.length*100}%`;
+  updateStats();
+}
+function nextQuestion(){questionIndex++;renderQuestion();}
+function showResults(){
+  $("quizSection").classList.add("hidden");$("resultsSection").classList.remove("hidden");
+  const total=currentTopic.questions.length,pct=Math.round(currentScore/total*100);
+  $("resultSummary").textContent=`You completed ${currentTopic.title} for Grade ${selectedGrade} ${selectedPath==="core"?"Core":"Essential"} Mathematics.`;
+  $("resultScore").textContent=`${currentScore}/${total}`;$("resultPercent").textContent=`${pct}%`;
+  $("resultGrade").textContent=pct>=80?"Excellent work!":pct>=60?"Good progress":"Keep practising";
+  const k=keyFor(currentTopic);topicAttempts[k]=(topicAttempts[k]||0)+1;localStorage.setItem("mmcbc_topicAttempts",JSON.stringify(topicAttempts));updateStats();
+  $("resultsSection").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function retryTopic(){const idx=curriculum[selectedGrade][selectedPath].indexOf(currentTopic);startTopic(idx);}
+function backToTopics(){$("notesSection").classList.add("hidden");$("quizSection").classList.add("hidden");$("resultsSection").classList.add("hidden");$("curriculumSection").classList.remove("hidden");renderTopics();$("curriculumSection").scrollIntoView({behavior:"smooth",block:"start"});}
+function updateStats(){
+  $("statAnswered").textContent=totalAnswered;
+  $("statAccuracy").textContent=totalAnswered?Math.round(totalCorrect/totalAnswered*100)+"%":"—";
+}
+function escapeHtml(value){return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+init();
+</script>
+</body>
+</html>
